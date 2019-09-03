@@ -1,0 +1,4 @@
+C:\Users\Chris\source\repos\Auction\Auction.Item.Data\obj\Debug\netstandard2.0\Auction.Item.Data.csprojAssemblyReference.cache
+C:\Users\Chris\source\repos\Auction\Auction.Item.Data\obj\Debug\netstandard2.0\Auction.Item.Data.csproj.CoreCompileInputs.cache
+C:\Users\Chris\source\repos\Auction\Auction.Item.Data\obj\Debug\netstandard2.0\Auction.Item.Data.AssemblyInfoInputs.cache
+C:\Users\Chris\source\repos\Auction\Auction.Item.Data\obj\Debug\netstandard2.0\Auction.Item.Data.AssemblyInfo.cs

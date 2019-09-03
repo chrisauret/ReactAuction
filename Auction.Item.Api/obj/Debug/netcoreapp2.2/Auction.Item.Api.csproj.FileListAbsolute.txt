@@ -1,0 +1,13 @@
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\bin\Debug\netcoreapp2.2\Auction.Item.Api.deps.json
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\bin\Debug\netcoreapp2.2\Auction.Item.Api.runtimeconfig.json
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\bin\Debug\netcoreapp2.2\Auction.Item.Api.runtimeconfig.dev.json
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\bin\Debug\netcoreapp2.2\Auction.Item.Api.dll
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\bin\Debug\netcoreapp2.2\Auction.Item.Api.pdb
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\obj\Debug\netcoreapp2.2\Auction.Item.Api.csproj.CoreCompileInputs.cache
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\obj\Debug\netcoreapp2.2\Auction.Item.Api.RazorAssemblyInfo.cache
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\obj\Debug\netcoreapp2.2\Auction.Item.Api.RazorAssemblyInfo.cs
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\obj\Debug\netcoreapp2.2\Auction.Item.Api.AssemblyInfoInputs.cache
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\obj\Debug\netcoreapp2.2\Auction.Item.Api.AssemblyInfo.cs
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\obj\Debug\netcoreapp2.2\Auction.Item.Api.RazorTargetAssemblyInfo.cache
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\obj\Debug\netcoreapp2.2\Auction.Item.Api.dll
+C:\Users\Chris\source\repos\Auction\Auction.Item.Api\obj\Debug\netcoreapp2.2\Auction.Item.Api.pdb

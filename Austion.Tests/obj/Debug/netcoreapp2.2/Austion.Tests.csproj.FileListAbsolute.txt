@@ -1,0 +1,14 @@
+C:\Users\Chris\source\repos\Auction\Austion.Tests\obj\Debug\netcoreapp2.2\Austion.Tests.csprojAssemblyReference.cache
+C:\Users\Chris\source\repos\Auction\Austion.Tests\obj\Debug\netcoreapp2.2\Austion.Tests.csproj.CoreCompileInputs.cache
+C:\Users\Chris\source\repos\Auction\Austion.Tests\obj\Debug\netcoreapp2.2\Austion.Tests.AssemblyInfoInputs.cache
+C:\Users\Chris\source\repos\Auction\Austion.Tests\obj\Debug\netcoreapp2.2\Austion.Tests.AssemblyInfo.cs
+C:\Users\Chris\source\repos\Auction\Austion.Tests\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.dll
+C:\Users\Chris\source\repos\Auction\Austion.Tests\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.pdb
+C:\Users\Chris\source\repos\Auction\Austion.Tests\bin\Debug\netcoreapp2.2\nunit.engine.netstandard.dll
+C:\Users\Chris\source\repos\Auction\Austion.Tests\bin\Debug\netcoreapp2.2\Austion.Tests.deps.json
+C:\Users\Chris\source\repos\Auction\Austion.Tests\bin\Debug\netcoreapp2.2\Austion.Tests.runtimeconfig.json
+C:\Users\Chris\source\repos\Auction\Austion.Tests\bin\Debug\netcoreapp2.2\Austion.Tests.runtimeconfig.dev.json
+C:\Users\Chris\source\repos\Auction\Austion.Tests\bin\Debug\netcoreapp2.2\Austion.Tests.dll
+C:\Users\Chris\source\repos\Auction\Austion.Tests\bin\Debug\netcoreapp2.2\Austion.Tests.pdb
+C:\Users\Chris\source\repos\Auction\Austion.Tests\obj\Debug\netcoreapp2.2\Austion.Tests.dll
+C:\Users\Chris\source\repos\Auction\Austion.Tests\obj\Debug\netcoreapp2.2\Austion.Tests.pdb
