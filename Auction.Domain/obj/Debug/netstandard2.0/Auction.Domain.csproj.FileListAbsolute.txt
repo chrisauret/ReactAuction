@@ -1,9 +1,9 @@
 C:\Users\Chris\source\repos\Auction\Auction.Domain\bin\Debug\netstandard2.0\Auction.Domain.deps.json
 C:\Users\Chris\source\repos\Auction\Auction.Domain\bin\Debug\netstandard2.0\Auction.Domain.dll
 C:\Users\Chris\source\repos\Auction\Auction.Domain\bin\Debug\netstandard2.0\Auction.Domain.pdb
-C:\Users\Chris\source\repos\Auction\Auction.Domain\obj\Debug\netstandard2.0\Auction.Domain.csprojAssemblyReference.cache
 C:\Users\Chris\source\repos\Auction\Auction.Domain\obj\Debug\netstandard2.0\Auction.Domain.csproj.CoreCompileInputs.cache
 C:\Users\Chris\source\repos\Auction\Auction.Domain\obj\Debug\netstandard2.0\Auction.Domain.AssemblyInfoInputs.cache
 C:\Users\Chris\source\repos\Auction\Auction.Domain\obj\Debug\netstandard2.0\Auction.Domain.AssemblyInfo.cs
 C:\Users\Chris\source\repos\Auction\Auction.Domain\obj\Debug\netstandard2.0\Auction.Domain.dll
 C:\Users\Chris\source\repos\Auction\Auction.Domain\obj\Debug\netstandard2.0\Auction.Domain.pdb
+C:\Users\Chris\source\repos\Auction\Auction.Domain\obj\Debug\netstandard2.0\Auction.Domain.csprojAssemblyReference.cache
