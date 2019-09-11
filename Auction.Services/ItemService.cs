@@ -3,6 +3,7 @@ using Auction.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Auction.Services
 {
@@ -15,17 +16,17 @@ namespace Auction.Services
             _itemRepository = itemRepository;
         }
 
-        public Item GetItem(int itemId)
+        public async Task<Item> GetItem(int itemId)
         {
-            return _itemRepository.GetItem(itemId);
+            return await _itemRepository.GetItem(itemId);
         }
 
-        public List<Item> GetItems()
+        public async Task<List<Item>> GetItems()
         {
-            return _itemRepository.GetItems();
+            return await _itemRepository.GetItems();
         }
 
-        public Item PlaceBid(int itemId, int userId, decimal amount)
+        public async Task<Item> PlaceBid(int itemId, int userId, decimal amount)
         {
             // TODO: Encapsulate each rule below into its own class to be used in a proper validation engine.
 
@@ -34,7 +35,7 @@ namespace Auction.Services
                 return null;
 
             // Fetch the item 
-            var item = _itemRepository.GetItem(itemId);
+            var item = await _itemRepository.GetItem(itemId);
 
             // Item owner cannot place bid
             if (item.OwnerId == userId)
@@ -72,9 +73,7 @@ namespace Auction.Services
 
             item.Bids.Add(newBid);
 
-            var updatedItem = _itemRepository.UpdateItem(item);
-
-            return updatedItem;
+            return  await _itemRepository.UpdateItem(item);
         }
     }
 }

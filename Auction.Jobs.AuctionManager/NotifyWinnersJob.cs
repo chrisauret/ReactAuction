@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace Auction.Jobs.AuctionManager
 {
+    // .Net Core 3.0 has a new WorkerService which would be ideal for this kind of background service :)
+    // https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/
+
     public class NotifyWinnersJob : IJob
     {
         private readonly IItemService _itemService;
@@ -25,7 +28,7 @@ namespace Auction.Jobs.AuctionManager
 
         public void EmailBidWinners()
         {
-            var items = _itemService.GetItems().Where(x => !x.WinnerNotified && DateTime.UtcNow > x.Expiry && x.Bids.Count > 0);
+            var items = _itemService.GetItems().GetAwaiter().GetResult().Where(x => !x.WinnerNotified && DateTime.UtcNow > x.Expiry && x.Bids.Count > 0);
 
             foreach (var item in items)
             {

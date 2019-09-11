@@ -24,7 +24,7 @@ namespace Tests
             // Arrange
             var itemService = new ItemService(new ItemRepository());
             // Act
-            var items = itemService.GetItems();
+            var items = itemService.GetItems().GetAwaiter().GetResult();
             // Assert  ( 5 open auction items in test data )
             Assert.AreEqual(items.Count(), 5);
         }

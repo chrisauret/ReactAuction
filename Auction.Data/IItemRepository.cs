@@ -1,13 +1,14 @@
 ﻿using Auction.Domain;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auction.Data
 {
     public interface IItemRepository
     {
-        Item GetItem(int itemId);
-        List<Item> GetItems();
-        Item UpdateItem(Item item);
+        Task<Item> GetItem(int itemId);
+        Task<List<Item>> GetItems();
+        Task<Item> UpdateItem(Item item);
     }
 }

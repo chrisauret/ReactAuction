@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Jobs.AuctionManager.Tests", "Auction.Jobs.AuctionManager.Tets\Auction.Jobs.AuctionManager.Tests.csproj", "{36B9BFF7-70D0-4ADB-AD3A-1BBB6AB24CAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{F9CE38C1-76F1-4890-A029-4370148F881B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9CE38C1-76F1-4890-A029-4370148F881B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9CE38C1-76F1-4890-A029-4370148F881B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36B9BFF7-70D0-4ADB-AD3A-1BBB6AB24CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B9BFF7-70D0-4ADB-AD3A-1BBB6AB24CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B9BFF7-70D0-4ADB-AD3A-1BBB6AB24CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B9BFF7-70D0-4ADB-AD3A-1BBB6AB24CAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2C907157-A5F0-4CF5-981B-84AEECD77220} = {53E44343-2B41-44AB-A769-6A5BBA11F920}
 		{81C9B3C9-A75E-45CC-A5FF-15EFC727474F} = {41F00898-9C35-485D-B5D5-67240E36AA3E}
+		{36B9BFF7-70D0-4ADB-AD3A-1BBB6AB24CAE} = {41F00898-9C35-485D-B5D5-67240E36AA3E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4CA39EA-4B3D-4F40-803E-304A802805E2}

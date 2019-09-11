@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Auction.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Auction.Data
 {
-    /// <summary>
-    /// This would usually be an EF data context object 
-    /// </summary>
     public class ItemRepository : IItemRepository
     {
+        private AuctionContext _dbContext;
+
         private List<Item> dummyItems;
 
         public ItemRepository()
         {
+            _dbContext = new AuctionContext();
+
             var dummyImgUrl = "https://loremflickr.com/320/240";
 
             dummyItems = new List<Item>
@@ -112,26 +115,29 @@ namespace Auction.Data
             };
         }
 
-
-        public List<Item> GetItems()
+        public async Task<List<Item>> GetItems()
         {
-            return dummyItems.Where(x => x.Expiry > DateTime.UtcNow && !x.WinnerNotified).ToList();
+            return await _dbContext.Items.Where(x => x.Expiry > DateTime.UtcNow && !x.WinnerNotified).ToListAsync();
         }
 
-        public Item GetItem(int itemId)
+        public async Task<Item> GetItem(int itemId)
         {
-            var item = dummyItems.SingleOrDefault(x => x.Id == itemId);
-
-            return item;
+            return await _dbContext.Items.SingleOrDefaultAsync(x => x.Id == itemId);
         }
 
-        public Item UpdateItem(Item item)
+        public async Task<Item> UpdateItem(Item item)
         {
-            var itemToUpdate = dummyItems.FirstOrDefault(x => x.Id == item.Id);
+            using (var db = new AuctionContext())
+            {
+                var result = db.Items.SingleOrDefault(x => x.Id == item.Id);
+                if (result != null)
+                {
+                    result.Bids = item.Bids;
+                    await db.SaveChangesAsync();
+                }
 
-            itemToUpdate.Bids = item.Bids;
-
-            return itemToUpdate;
+                return result;
+            }
         }
     }
 }

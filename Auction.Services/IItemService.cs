@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Auction.Services
 {
     public interface IItemService
     {
-        Item GetItem(int itemId);
-        List<Item> GetItems();
-        Item PlaceBid(int itemId, int userId, decimal amount);
+        Task<Item> GetItem(int itemId);
+        Task<List<Item>> GetItems();
+        Task<Item> PlaceBid(int itemId, int userId, decimal amount);
     }
 }
