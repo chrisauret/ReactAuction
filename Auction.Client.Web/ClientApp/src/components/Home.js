@@ -21,7 +21,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className="row">
                 {this.props.items.map((item, index) => {
                     return (
                         <Item key={item.id} item={item} placeBid={() => this.handlePlaceBid()} />

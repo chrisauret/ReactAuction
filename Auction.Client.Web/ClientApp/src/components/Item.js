@@ -6,14 +6,17 @@ import { actionCreators } from '../store/Items';
 
 
 const styles = {
-    card: { width: 300 },
+    card: {
+        width: 300,
+        margin: "25px"
+    },
 }
 
 const Item = props => (
 
  
         <div className='card' style={styles.card}>
-            <img className="card-img-top" src="https://picsum.photos/220/300?blur=5" alt={props.item.title} />
+            <img className="card-img-top" src="https://picsum.photos/220/150?blur=5" alt={props.item.title} />
             <div className="card-body">
                 <h4 className="card-title">{props.item.title}</h4>
                 <p className="card-text">Bidding Ends:{props.item.expiry}</p>
