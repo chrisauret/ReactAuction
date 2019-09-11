@@ -52,7 +52,7 @@ namespace Tests
             var userId = 4;
             var amount = 5;
             // Act
-            var item = itemService.PlaceBid(itemId, userId, amount);
+            var item =  itemService.PlaceBid(itemId, userId, amount);
             // Assert
             Assert.IsNull(item);
         }
