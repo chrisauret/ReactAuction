@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Auction.Domain;
 using Microsoft.EntityFrameworkCore;
@@ -18,19 +17,24 @@ namespace Auction.Data
             _dbContext.Database.EnsureCreated();
         }
 
-        public async Task<List<Item>> GetItems()
+        public async Task<List<Item>> GetItemsAsync()
         {
-            var items = await _dbContext.Items.Where(x => x.Expiry > DateTime.UtcNow && !x.WinnerNotified).ToListAsync();
-
-            return items;
+            using (var db = new AuctionContext())
+            {
+                return await _dbContext.Items.Where(x => x.Expiry > DateTime.UtcNow && !x.WinnerNotified).ToListAsync();
+            }
         }
 
-        public async Task<Item> GetItem(int itemId)
+        public async Task<Item> GetItemAsync(int itemId)
         {
-            return await _dbContext.Items.SingleOrDefaultAsync(x => x.Id == itemId);
+            using (var db = new AuctionContext())
+            {
+                return await db.Items.SingleOrDefaultAsync(x => x.Id == itemId);
+            }
+                
         }
 
-        public async Task<Item> UpdateItem(Item item)
+        public async Task<Item> PlaceBidAsync(Item item)
         {
             using (var db = new AuctionContext())
             {

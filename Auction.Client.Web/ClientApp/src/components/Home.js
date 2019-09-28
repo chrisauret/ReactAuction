@@ -24,7 +24,7 @@ class Home extends Component {
             <div className="row">
                 {this.props.items.map((item, index) => {
                     return (
-                        <Item key={item.id} item={item} placeBid={() => this.handlePlaceBid()} />
+                        <Item key={item.id} item={item} placeBid={this.props.handlePlaceBid} />
                     )
                 })}
             </div>

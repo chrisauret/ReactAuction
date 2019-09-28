@@ -8,8 +8,8 @@ namespace Auction.Services
 {
     public interface IItemService
     {
-        Task<Item> GetItem(int itemId);
-        Task<List<Item>> GetItems();
-        Task<Item> PlaceBid(int itemId, int userId, decimal amount);
+        Task<Item> GetItemAsync(int itemId);
+        Task<List<Item>> GetItemsAsync();
+        Task<Item> PlaceBidAsync(int itemId, int userId, decimal amount);
     }
 }

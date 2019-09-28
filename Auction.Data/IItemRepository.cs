@@ -7,8 +7,8 @@ namespace Auction.Data
 {
     public interface IItemRepository
     {
-        Task<Item> GetItem(int itemId);
-        Task<List<Item>> GetItems();
-        Task<Item> UpdateItem(Item item);
+        Task<Item> GetItemAsync(int itemId);
+        Task<List<Item>> GetItemsAsync();
+        Task<Item> PlaceBidAsync(Item item);
     }
 }

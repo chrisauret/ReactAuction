@@ -28,7 +28,7 @@ namespace Auction.Jobs.AuctionManager
 
         public void EmailBidWinners()
         {
-            var items = _itemService.GetItems().GetAwaiter().GetResult().Where(x => !x.WinnerNotified && DateTime.UtcNow > x.Expiry && x.Bids.Count > 0);
+            var items = _itemService.GetItemsAsync().GetAwaiter().GetResult().Where(x => !x.WinnerNotified && DateTime.UtcNow > x.Expiry && x.Bids.Count > 0);
 
             foreach (var item in items)
             {

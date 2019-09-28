@@ -26,7 +26,9 @@ namespace Auction.Client.Web
             services.AddSingleton<IItemRepository, ItemRepository>();
             services.AddSingleton<IItemService, ItemService> ();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllersWithViews();
+
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -55,18 +57,16 @@ namespace Auction.Client.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseRouting();
 
             app.UseSignalR(routes =>
             {
                 routes.MapHub<AuctionHub>("/auctionHub");
             });
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+            });            
 
             app.UseSpa(spa =>
             {

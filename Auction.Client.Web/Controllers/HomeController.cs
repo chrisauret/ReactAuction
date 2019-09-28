@@ -12,39 +12,45 @@ namespace Auction.Client.Web.Controllers
     [Route("api/[controller]")]
     public class HomeController : Controller
     {
-        private IItemService _itemService;
+        private readonly IItemService _itemService;
 
         public HomeController(IItemService itemService)
         {
             _itemService = itemService;
         }
 
-        [HttpGet("[action]")]
-        public async Task<IEnumerable<Item>> GetItems()
+        [HttpGet("GetItems")]
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
-            var items = await _itemService.GetItems();
-
-            return items;
+            return await _itemService.GetItemsAsync();
         }
 
-        [HttpGet("[action]/id")]
-        public async Task<Item> GetItem(int id)
+        [HttpGet("GetItem{id}")]
+        public async Task<Item> GetItemAsync(int id)
         {
-            var item = await _itemService.GetItem(id);
-
-            return item;
+            return await _itemService.GetItemAsync(id);
         }
 
-        [HttpPut]
-        public IActionResult PlaceBid(int itemId, int userId, decimal amount)
+        [HttpPost("PlaceBid")]
+        public async Task<IActionResult> PlaceBidAsync([FromBody] ItemBidRequest request)
         {
-             _itemService.PlaceBid(itemId, userId, amount);
-            
+            await _itemService.PlaceBidAsync(request.ItemId, request.UserId, request.Amount);
+
+            var items = await _itemService.GetItemsAsync();
+
             return Ok(new
             {
+                data = items,
                 success = true,
                 returncode = "200"
             });
+        }
+
+        public class ItemBidRequest
+        {
+            public int ItemId { get; set; }
+            public int UserId { get; set; }
+            public int Amount { get; set; }
         }
     }
 }

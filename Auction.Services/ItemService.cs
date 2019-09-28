@@ -16,26 +16,27 @@ namespace Auction.Services
             _itemRepository = itemRepository;
         }
 
-        public async Task<Item> GetItem(int itemId)
+        public async Task<Item> GetItemAsync(int itemId)
         {
-            return await _itemRepository.GetItem(itemId);
+            return await _itemRepository.GetItemAsync(itemId);
         }
 
-        public async Task<List<Item>> GetItems()
+        public async Task<List<Item>> GetItemsAsync()
         {
-            return await _itemRepository.GetItems();
+            return await _itemRepository.GetItemsAsync();
         }
 
-        public async Task<Item> PlaceBid(int itemId, int userId, decimal amount)
+        public async Task<Item> PlaceBidAsync(int itemId, int userId, decimal amount)
         {
             // TODO: Encapsulate each rule below into its own class to be used in a proper validation engine.
+            // and return ValidationResult instead of null.
 
             // Amount must be positive
             if (amount <= 0)
                 return null;
 
             // Fetch the item 
-            var item = await _itemRepository.GetItem(itemId);
+            var item = await _itemRepository.GetItemAsync(itemId);
 
             // Item owner cannot place bid
             if (item.OwnerId == userId)
@@ -73,7 +74,7 @@ namespace Auction.Services
 
             item.Bids.Add(newBid);
 
-            return  await _itemRepository.UpdateItem(item);
+            return  await _itemRepository.PlaceBidAsync(item);
         }
     }
 }

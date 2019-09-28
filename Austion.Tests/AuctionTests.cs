@@ -24,7 +24,7 @@ namespace Tests
             // Arrange
             var itemService = new ItemService(new ItemRepository());
             // Act
-            var items = itemService.GetItems().GetAwaiter().GetResult();
+            var items = itemService.GetItemsAsync().GetAwaiter().GetResult();
             // Assert  ( 5 open auction items in test data )
             Assert.AreEqual(items.Count(), 5);
         }
@@ -38,7 +38,7 @@ namespace Tests
             var userId = 901;
             var amount = 280;
             // Act
-            var item = itemService.PlaceBid(itemId, userId, amount);
+            var item = itemService.PlaceBidAsync(itemId, userId, amount);
             // Assert
             Assert.IsNull(item);
         }
@@ -52,7 +52,7 @@ namespace Tests
             var userId = 4;
             var amount = 5;
             // Act
-            var item =  itemService.PlaceBid(itemId, userId, amount);
+            var item =  itemService.PlaceBidAsync(itemId, userId, amount);
             // Assert
             Assert.IsNull(item);
         }
@@ -66,7 +66,7 @@ namespace Tests
             var userId = 2; // Same as OwnerId
             var amount = 280;
             // Act
-            var item = itemService.PlaceBid(itemId, userId, amount);
+            var item = itemService.PlaceBidAsync(itemId, userId, amount);
             // Assert
             Assert.IsNull(item);
         }
@@ -80,7 +80,7 @@ namespace Tests
             var userId = 5; // Same as last bid
             var amount = 280;
             // Act
-            var item = itemService.PlaceBid(itemId, userId, amount);
+            var item = itemService.PlaceBidAsync(itemId, userId, amount);
             // Assert
             Assert.IsNull(item);
         }
@@ -94,7 +94,7 @@ namespace Tests
             var userId = 5; // Same as last bid
             var amount = -280;
             // Act
-            var item = itemService.PlaceBid(itemId, userId, amount);
+            var item = itemService.PlaceBidAsync(itemId, userId, amount);
             // Assert
             Assert.IsNull(item);
         }

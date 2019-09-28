@@ -31,15 +31,20 @@ export const actionCreators = {
         dispatch({ type: receiveItemType, item });
     },
 
-    updateItem: (item) => async (dispatch, getState) => {
-        const baseURL = "/api/Home";
+    placeBid: (item) => async (dispatch, getState) => {
+
+        console.log("You are going to be rich Chris :)")
+
+        const baseURL = "api/Home/PlaceBid";
 
         const data = JSON.stringify({
-            itemId: item.id, userId: 123
+            itemId: 123, userId: 876, amount: 170.0
         });
 
+        console.log(data);
+
         const fetchTask = fetch(baseURL, {
-            method: "PUT",
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -78,6 +83,9 @@ export const reducer = (state, action) => {
     }
 
     if (action.type === updateItemType) {
+
+        console.log("God forgives you!")
+        console.log("state", state);
 
         return {
             ...state,
