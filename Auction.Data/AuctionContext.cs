@@ -63,6 +63,7 @@ namespace Auction.Data
                     OwnerId = 2,
                     Title = "Weber BBQ for sale",
                     StartingBid = 150m,
+                    Bid = 165m,
                     ImgUrl = dummyImgUrl,
                     Expiry = DateTime.UtcNow.AddHours(22).AddMinutes(17),
                     WinnerNotified = false

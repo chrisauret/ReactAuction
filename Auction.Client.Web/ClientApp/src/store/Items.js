@@ -4,10 +4,9 @@ const requestItemTpe = 'REQUEST_ITEM';
 const receiveItemType = 'RECEIVE_ITEM';
 const updateItemType = 'UPDATE_ITEM';
 
-const initialState = { items: [], item: {}, currId: 0, isLoading: false };
+const initialState = { items: [], item: {}, currId: 0, userId:9099, isLoading: false, bid:"" };
 
 let allitems = [];
-let currentItem = {};
 
 export const actionCreators = {
     requestItems: () => async (dispatch, getState) => {
@@ -33,17 +32,18 @@ export const actionCreators = {
 
     placeBid: (item) => async (dispatch, getState) => {
 
-        console.log("You are going to be rich Chris :)")
+        console.log("wow");
+        console.log("item", item);
 
-        const baseURL = "api/Home/PlaceBid";
+        const baseURL = "api/home/placebid";
 
         const data = JSON.stringify({
             itemId: 123, userId: 876, amount: 170.0
         });
 
-        console.log(data);
+        console.log("Posting: ", data);
 
-        const fetchTask = fetch(baseURL, {
+        fetch(baseURL, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -52,6 +52,7 @@ export const actionCreators = {
             body: data
         })
         .then((data) => {
+            console.log("Place bid Response: ", data);
             dispatch({ type: updateItemType, item: data });
         });
     },
@@ -70,10 +71,9 @@ export const reducer = (state, action) => {
 
     if (action.type === receiveItemsType) {
 
-        console.log("action", action);
-        console.log("state", state);
-
         allitems = action.allitems;
+
+        console.log("allitems",allitems);
 
         return {
             ...state,
@@ -83,10 +83,6 @@ export const reducer = (state, action) => {
     }
 
     if (action.type === updateItemType) {
-
-        console.log("God forgives you!")
-        console.log("state", state);
-
         return {
             ...state,
             isLoading: false

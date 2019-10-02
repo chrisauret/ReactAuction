@@ -14,6 +14,7 @@ namespace Auction.Domain
         public string Description { get; set; }
         public string ImgUrl { get; set; }
         public DateTime Expiry { get; set; }
+        public decimal? Bid { get; set; }
         public decimal StartingBid { get; set; }
         public decimal CurrentBid
         {
