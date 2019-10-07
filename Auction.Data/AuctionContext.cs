@@ -57,16 +57,16 @@ namespace Auction.Data
             });
 
             modelBuilder.Entity<Item>().HasData(new
-                {
-                    Id = 124,
-                    Description = "Weber",
-                    OwnerId = 2,
-                    Title = "Weber BBQ for sale",
-                    StartingBid = 150m,
-                    Bid = 165m,
-                    ImgUrl = dummyImgUrl,
-                    Expiry = DateTime.UtcNow.AddHours(22).AddMinutes(17),
-                    WinnerNotified = false
+            {
+                Id = 124,
+                Description = "Weber",
+                OwnerId = 2,
+                Title = "Weber BBQ for sale",
+                StartingBid = 150m,
+                Bid = 165m,
+                ImgUrl = dummyImgUrl,
+                Expiry = DateTime.UtcNow.AddHours(22).AddMinutes(17),
+                WinnerNotified = false
             });
 
             modelBuilder.Entity<Item>().HasData(new

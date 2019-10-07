@@ -20,9 +20,14 @@ namespace Auction.Domain
         {
             get
             {
-                if (Bids != null && Bids.Count() > 0)
+                //if (Bids != null && Bids.Count() > 0)
+                //{
+                //    return Bids.Max(x => x.Amount);
+                //}
+
+                if(Bids != null && Bids.Count() > 0)
                 {
-                    return Bids.Max(x => x.Amount);
+                    return Bids[Bids.Count() - 1].Amount;
                 }
 
                 return 0;

@@ -10,11 +10,9 @@ class Home extends Component {
             <Container>
                 <Row>
                     <Col>
-
-                    <Fragment>
+                        <Fragment>
                             {this.props.children}
                         </Fragment>
-
                     </Col>
                 </Row>
             </Container>

@@ -14,16 +14,15 @@ class Item extends Component {
 
     constructor(props) {
         super(props);
-       
+
         this.state = {
-            bid: this.props.item.bid || "",
-            id: this.props.item.id
+            bidAmount: props.item.bidAmount
         };
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
-    
+
     render() {
         return (
             <div className='card' style={styles.card}>
@@ -37,7 +36,7 @@ class Item extends Component {
                         <input id="id" type="hidden" value={this.props.item.id} />
                         <div className="form-group">
                             <label htmlFor="bid">Place Bid:</label>
-                            <input type="text" className="form-control" value={this.state.bid || ""} id="bid" onChange={this.onChange} />
+                            <input type="text" className="form-control" value={this.state.bidAmount || ""} id="bid" onChange={this.onChange} />
                         </div>
                         <button type="submit" className=" btn btn-primary" >Place Bid</button>
                     </form>
@@ -47,24 +46,31 @@ class Item extends Component {
     }
 
     onChange(e) {
-        this.setState({ bid: e.target.value });
+        this.setState({ bidAmount: e.target.value });
     }
 
     onSubmit(e) {
         e.preventDefault();
 
         var data = {
-            itemId: this.state.id,
-            bid: this.state.bid
+            itemId: this.props.item.id,
+            bidAmount: Number(this.state.bidAmount)
         }
 
         this.props.placeBid(data);
     }
 }
 
-function mapStateToProps(state) {
-    console.log("mapStateToProps", state);
-    return state;
+function mapStateToProps(state, ownProps) {
+    //It is called every time the store state changes.
+    //It receives the entire store state, and should return an object of data this component needs.
+
+    var stateToProps =  {
+        ...ownProps,
+        bidAmount: state.items.bidAmount
+    }
+
+    return stateToProps;
 }
 
 export default connect(

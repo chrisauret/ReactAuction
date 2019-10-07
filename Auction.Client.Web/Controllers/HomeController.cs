@@ -34,23 +34,16 @@ namespace Auction.Client.Web.Controllers
         [HttpPost("PlaceBid")]
         public async Task<IActionResult> PlaceBidAsync([FromBody] ItemBidRequest request)
         {
-            await _itemService.PlaceBidAsync(request.ItemId, request.UserId, request.Amount);
+            var item = await _itemService.PlaceBidAsync(request.ItemId, request.UserId, request.BidAmount);
 
-            var items = await _itemService.GetItemsAsync();
-
-            return Ok(new
-            {
-                data = items,
-                success = true,
-                returncode = "200"
-            });
+            return Json(item);
         }
 
         public class ItemBidRequest
         {
             public int ItemId { get; set; }
             public int UserId { get; set; }
-            public int Amount { get; set; }
+            public int BidAmount { get; set; }
         }
     }
 }

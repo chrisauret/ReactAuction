@@ -4,9 +4,7 @@ const requestItemTpe = 'REQUEST_ITEM';
 const receiveItemType = 'RECEIVE_ITEM';
 const updateItemType = 'UPDATE_ITEM';
 
-const initialState = { items: [], item: {}, currId: 0, userId:9099, isLoading: false, bid:"" };
-
-let allitems = [];
+const initialState = { items: [], userId: 9099, isLoading: false, bidAmount: 0.0 };
 
 export const actionCreators = {
     requestItems: () => async (dispatch, getState) => {
@@ -15,9 +13,9 @@ export const actionCreators = {
 
         const url = `api/Home/GetItems`;
         const response = await fetch(url);
-        const allitems = await response.json();
+        const items = await response.json();
 
-        dispatch({ type: receiveItemsType, allitems });
+        dispatch({ type: receiveItemsType, payload: items });
     },
 
     requestItem: (id) => async (dispatch, getState) => {
@@ -27,21 +25,19 @@ export const actionCreators = {
         const response = await fetch(url);
         const item = await response.json();
 
-        dispatch({ type: receiveItemType, item });
+        dispatch({ type: receiveItemType, payload: item });
     },
 
     placeBid: (item) => async (dispatch, getState) => {
 
-        console.log("wow");
-        console.log("item", item);
+        let state = getState();
 
         const baseURL = "api/home/placebid";
 
         const data = JSON.stringify({
-            itemId: 123, userId: 876, amount: 170.0
+            ...item,
+            userId: state.items.userId
         });
-
-        console.log("Posting: ", data);
 
         fetch(baseURL, {
             method: "POST",
@@ -51,9 +47,9 @@ export const actionCreators = {
             },
             body: data
         })
-        .then((data) => {
-            console.log("Place bid Response: ", data);
-            dispatch({ type: updateItemType, item: data });
+        .then(response => response.json())
+        .then(item => {
+            dispatch({ type: updateItemType, payload: item })
         });
     },
 }
@@ -71,20 +67,23 @@ export const reducer = (state, action) => {
 
     if (action.type === receiveItemsType) {
 
-        allitems = action.allitems;
-
-        console.log("allitems",allitems);
-
         return {
             ...state,
-            items: allitems,
-            isLoading: false
+            items: action.payload,
+            isLoading: false,
         };
     }
 
     if (action.type === updateItemType) {
+
+        let items = [...state.items];
+        let objIndex = items.findIndex((obj => obj.id === action.payload.id));
+        items[objIndex] = action.payload;
+
         return {
-            ...state,
+            userId: state.userId,
+            bidAmount: 0,
+            items: items,
             isLoading: false
         };
     }

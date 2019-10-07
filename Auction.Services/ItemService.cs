@@ -2,7 +2,6 @@
 using Auction.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Auction.Services
@@ -38,32 +37,32 @@ namespace Auction.Services
             // Fetch the item 
             var item = await _itemRepository.GetItemAsync(itemId);
 
-            // Item owner cannot place bid
-            if (item.OwnerId == userId)
-                return null;
+            //// Item owner cannot place bid
+            //if (item.OwnerId == userId)
+            //    return null;
 
-            if (item.Bids != null && item.Bids.Count() > 0)
-            {
-                var lastBid = item.Bids[item.Bids.Count() - 1];
+            //if (item.Bids != null && item.Bids.Count() > 0)
+            //{
+            //    var lastBid = item.Bids[item.Bids.Count() - 1];
 
-                // Bid must be higher that last bid
-                if (amount <= lastBid.Amount)
-                {
-                    return null;
-                }
+            //    // Bid must be higher that last bid
+            //    if (amount <= lastBid.Amount)
+            //    {
+            //        return null;
+            //    }
 
-                // Cannot place 2 bids in a row
-                if (userId == lastBid.UserId)
-                {
-                    return null;
-                }
-            }
+            //    // Cannot place 2 bids in a row
+            //    if (userId == lastBid.UserId)
+            //    {
+            //        return null;
+            //    }
+            //}
 
-            // Cannot bid on an expired item
-            if (item.Expiry <= DateTime.UtcNow)
-            {
-                return null;
-            }
+            //// Cannot bid on an expired item
+            //if (item.Expiry <= DateTime.UtcNow)
+            //{
+            //    return null;
+            //}
 
             var newBid = new Bid()
             {
@@ -74,7 +73,18 @@ namespace Auction.Services
 
             item.Bids.Add(newBid);
 
-            return  await _itemRepository.PlaceBidAsync(item);
+            try
+            {
+                var updatedItem = await _itemRepository.PlaceBidAsync(item);
+
+                return updatedItem;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return null;
         }
     }
 }
