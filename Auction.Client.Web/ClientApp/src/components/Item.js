@@ -16,7 +16,7 @@ class Item extends Component {
         super(props);
 
         this.state = {
-            bidAmount: props.item.bidAmount
+            bid: this.props.bid
         };
 
         this.onChange = this.onChange.bind(this);
@@ -36,7 +36,7 @@ class Item extends Component {
                         <input id="id" type="hidden" value={this.props.item.id} />
                         <div className="form-group">
                             <label htmlFor="bid">Place Bid:</label>
-                            <input type="text" className="form-control" value={this.state.bidAmount || ""} id="bid" onChange={this.onChange} />
+                            <input type="text" className="form-control" value={this.state.bid || ""} id="bid" onChange={this.onChange} />
                         </div>
                         <button type="submit" className=" btn btn-primary" >Place Bid</button>
                     </form>
@@ -46,18 +46,15 @@ class Item extends Component {
     }
 
     onChange(e) {
-        this.setState({ bidAmount: e.target.value });
+        this.setState({ bid: e.target.value });
     }
 
     onSubmit(e) {
         e.preventDefault();
 
-        var data = {
-            itemId: this.props.item.id,
-            bidAmount: Number(this.state.bidAmount)
-        }
+        this.props.placeBid(this.state);
 
-        this.props.placeBid(data);
+        this.setState({ bidAmount: null });
     }
 }
 
@@ -65,12 +62,7 @@ function mapStateToProps(state, ownProps) {
     //It is called every time the store state changes.
     //It receives the entire store state, and should return an object of data this component needs.
 
-    var stateToProps =  {
-        ...ownProps,
-        bidAmount: state.items.bidAmount
-    }
-
-    return stateToProps;
+    return state;
 }
 
 export default connect(

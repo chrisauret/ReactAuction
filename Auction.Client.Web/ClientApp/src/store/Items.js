@@ -4,18 +4,25 @@ const requestItemTpe = 'REQUEST_ITEM';
 const receiveItemType = 'RECEIVE_ITEM';
 const updateItemType = 'UPDATE_ITEM';
 
-const initialState = { items: [], userId: 9099, isLoading: false, bidAmount: 0.0 };
+const initialState = {
+    userId: 9099,
+    items: [],
+    isLoading: false
+};
 
 export const actionCreators = {
     requestItems: () => async (dispatch, getState) => {
 
-        dispatch({ type: requestItemsType });
+        //dispatch({ type: requestItemsType });
 
         const url = `api/Home/GetItems`;
-        const response = await fetch(url);
-        const items = await response.json();
-
-        dispatch({ type: receiveItemsType, payload: items });
+        fetch(url)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                dispatch({ type: receiveItemsType, payload: data })
+            });
     },
 
     requestItem: (id) => async (dispatch, getState) => {
@@ -47,10 +54,10 @@ export const actionCreators = {
             },
             body: data
         })
-        .then(response => response.json())
-        .then(item => {
-            dispatch({ type: updateItemType, payload: item })
-        });
+            .then(response => response.json())
+            .then(item => {
+                dispatch({ type: updateItemType, payload: item })
+            });
     },
 }
 
@@ -67,11 +74,16 @@ export const reducer = (state, action) => {
 
     if (action.type === receiveItemsType) {
 
-        return {
+        console.log("action.payload", action.payload);
+
+        let newState = {
             ...state,
             items: action.payload,
             isLoading: false,
         };
+        console.log("newState", newState);
+
+        return newState;
     }
 
     if (action.type === updateItemType) {
@@ -82,7 +94,6 @@ export const reducer = (state, action) => {
 
         return {
             userId: state.userId,
-            bidAmount: 0,
             items: items,
             isLoading: false
         };

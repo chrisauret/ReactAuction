@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/Items';
 
-class Home extends Component {
+class Home1 extends Component {
     render() {
         return (
             <Container>
@@ -23,4 +23,4 @@ class Home extends Component {
 export default connect(
     state => state.items,
     dispatch => bindActionCreators(actionCreators, dispatch)
-)(Home);
+)(Home1);

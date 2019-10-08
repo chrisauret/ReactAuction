@@ -6,29 +6,43 @@ import Item from './Item';
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
+    componentDidMount() {
 
-        props.requestItems();
-    }
+        console.log("componentdidmount this.props", this.props);
+        this.props.requestItems();
+    } 
 
     render() {
+
         return (
             <div className="row">
                 {
-                    this.props.items.map((item, index) => {
-                        return (
-                            <Item key={item.id} item={item} placeBid={this.props.handlePlaceBid} />
-                        )
-                    })
+                    //this.props.items.map((item) => {
+                    //    return (
+                    //        <Item key={item.id} item={item} bidAmount={0} />
+                    //    )
+                    //})
                 }
             </div>
         )
     }
 }
 
-function mapStateToProps(state) {
-    return state.items;
+function mapStateToProps(state, ownProps) {
+
+    return state;
+
+    //console.log("state ms2p", state);
+    ////console.log("ownProps ms2p", ownProps);
+
+    //let xxx ={
+    //    ...state,
+    //    ...ownProps
+    //}
+
+    //console.log("xxx", xxx);
+
+    //return xxx;
 }
 
 export default connect(
