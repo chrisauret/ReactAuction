@@ -16,8 +16,11 @@ class Item extends Component {
         super(props);
 
         this.state = {
-            bid: this.props.bid
+            ...props,
+            //bid: this.props.bid
         };
+
+        console.log(this.state);
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -36,7 +39,7 @@ class Item extends Component {
                         <input id="id" type="hidden" value={this.props.item.id} />
                         <div className="form-group">
                             <label htmlFor="bid">Place Bid:</label>
-                            <input type="text" className="form-control" value={this.state.bid || ""} id="bid" onChange={this.onChange} />
+                            <input type="text" className="form-control" value={this.state.item.bid || ""} id="bid" onChange={this.onChange} />
                         </div>
                         <button type="submit" className=" btn btn-primary" >Place Bid</button>
                     </form>
@@ -46,15 +49,31 @@ class Item extends Component {
     }
 
     onChange(e) {
-        this.setState({ bid: e.target.value });
+        //console.log(this.state);
+        //console.log(e.target.value);
+
+        var item = { ...this.state.item }
+
+        //console.log("item 1", item)
+        item.bid = Number(e.target.value);
+        //console.log("item 2", item)
+
+        this.setState(
+            {
+                item: item
+            },
+            () => {
+                console.log("onChange state", this.state)
+            }
+        );
     }
 
     onSubmit(e) {
         e.preventDefault();
+        console.log("onSubmit state", this.state.item)
+        this.props.placeBid(this.state.item);
 
-        this.props.placeBid(this.state);
-
-        this.setState({ bidAmount: null });
+        this.setState({ bid: null });
     }
 }
 

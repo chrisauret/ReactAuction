@@ -7,8 +7,7 @@ import Item from './Item';
 class Home extends Component {
 
     componentDidMount() {
-
-        console.log("componentdidmount this.props", this.props);
+        //console.log("componentdidmount this.props", this.props);
         this.props.requestItems();
     } 
 
@@ -17,32 +16,22 @@ class Home extends Component {
         return (
             <div className="row">
                 {
-                    //this.props.items.map((item) => {
-                    //    return (
-                    //        <Item key={item.id} item={item} bidAmount={0} />
-                    //    )
-                    //})
+                    this.props.items.items.map((item) => {
+                        return (
+                            <Item key={item.id} item={item} />
+                        )
+                    })
                 }
             </div>
         )
     }
 }
 
-function mapStateToProps(state, ownProps) {
-
-    return state;
+function mapStateToProps(state) {
 
     //console.log("state ms2p", state);
-    ////console.log("ownProps ms2p", ownProps);
 
-    //let xxx ={
-    //    ...state,
-    //    ...ownProps
-    //}
-
-    //console.log("xxx", xxx);
-
-    //return xxx;
+    return state;
 }
 
 export default connect(
