@@ -2,7 +2,8 @@
 const receiveItemsType = 'RECEIVE_ITEMS';
 const requestItemTpe = 'REQUEST_ITEM';
 const receiveItemType = 'RECEIVE_ITEM';
-const updateItemType = 'UPDATE_ITEM';
+const requestUpdateItemType = 'REQUEST_UPDATE_ITEM';
+const receiveUpdateItemType = 'RECEIVE_UPDATE_ITEM';
 
 const initialState = {
     userId: 9099,
@@ -37,10 +38,12 @@ export const actionCreators = {
 
     placeBid: (item) => async (dispatch, getState) => {
 
+        dispatch({ type: requestUpdateItemType });
+
         let state = getState();
 
-        console.log("placeBid item", item)
-        console.log("placeBid state", state)
+        //console.log("placeBid item", item)
+        //console.log("placeBid state", state)
 
         const baseURL = "api/home/placebid";
 
@@ -59,8 +62,8 @@ export const actionCreators = {
         })
             .then(response => response.json())
             .then(item => {
-                console.log("Response: updatedItem", item);
-                dispatch({ type: updateItemType, payload: item })
+                //console.log("Response: updatedItem", item);
+                dispatch({ type: receiveUpdateItemType, payload: item })
             });
     },
 }
@@ -78,49 +81,32 @@ export const reducer = (state, action) => {
 
     if (action.type === receiveItemsType) {
 
-        //console.log("action.payload", action.payload);
-
-        let newState = {
+        return {
             ...state,
             items: action.payload,
             isLoading: false,
-        };
-        //console.log("newState", newState);
-
-        return newState;
+        }
     }
 
-    if (action.type === updateItemType) {
+    if (action.type === requestUpdateItemType) {
 
-        console.log("action state", state);
-        console.log("action payload", action);
+        return {
+            ...state,
+            isLoading: true
+        };
+    }
+
+    if (action.type === receiveUpdateItemType) {
 
         let items = [...state.items];
         let objIndex = items.findIndex((obj => obj.id === action.payload.id));
         items[objIndex] = action.payload;
 
-        //return Object.assign({}, state, {
-        //    isLoading: false, 
-        //    items
-        //})
-
         return {
             ...state,
-            isLoading: false,
-            items
+            items,
+            isLoading: false
         }
-
-        //console.log("action state", state);
-        //console.log("action payload", action);
-        ////return {};
-
-
-
-        //return {
-        //    userId: state.userId,
-        //    items: items,
-        //    isLoading: false
-        //};
     }
 
     return state;

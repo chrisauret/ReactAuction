@@ -17,7 +17,7 @@ class Item extends Component {
 
         this.state = {
             ...props,
-            //bid: this.props.bid
+            bid: this.props.bid
         };
 
         console.log(this.state);
@@ -27,6 +27,8 @@ class Item extends Component {
     }
 
     render() {
+        console.log("render:this.props", this.props);
+        
         return (
             <div className='card' style={styles.card}>
                 <img className="card-img-top" src="https://picsum.photos/220/150?blur=5" alt={this.props.item.title} />
@@ -39,7 +41,7 @@ class Item extends Component {
                         <input id="id" type="hidden" value={this.props.item.id} />
                         <div className="form-group">
                             <label htmlFor="bid">Place Bid:</label>
-                            <input type="text" className="form-control" value={this.state.item.bid || ""} id="bid" onChange={this.onChange} />
+                            <input type="text" className="form-control" value={this.state.bid || ""} id="bid" onChange={this.onChange} />
                         </div>
                         <button type="submit" className=" btn btn-primary" >Place Bid</button>
                     </form>
@@ -53,14 +55,12 @@ class Item extends Component {
         //console.log(e.target.value);
 
         var item = { ...this.state.item }
-
-        //console.log("item 1", item)
         item.bid = Number(e.target.value);
-        //console.log("item 2", item)
 
         this.setState(
             {
-                item: item
+                item: item,
+                bid: e.target.value
             },
             () => {
                 console.log("onChange state", this.state)
@@ -81,7 +81,25 @@ function mapStateToProps(state, ownProps) {
     //It is called every time the store state changes.
     //It receives the entire store state, and should return an object of data this component needs.
 
-    return state;
+    console.log("Item:mapStateToProps state", state)
+    console.log("Item:mapStateToProps ownProps", ownProps)
+
+    //let mstp = {
+    //    ...state,
+    //    bid: ownProps.item.bid
+    //}
+
+    let copy = { ...ownProps };
+    console.log("Item:mapStateToProps copy", copy);
+    copy.item.bid = null;
+
+    let mstp = {
+        ...copy
+    }
+
+    console.log("Item:mapStateToProps mapped", mstp);
+
+    return mstp;
 }
 
 export default connect(
