@@ -1,19 +1,25 @@
 ﻿import React from 'react'
-import { format } from 'date-fns';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import { differenceInMinutes, differenceInSeconds, differenceInMonths, differenceInDays, differenceInHours, differenceInYears, addYears, addMonths, addDays, addHours, addMinutes } from 'date-fns'
-
+import {
+    differenceInDays,
+    differenceInHours,
+    differenceInMinutes,
+    differenceInSeconds,
+    addDays,
+    addHours,
+    addMinutes
+} from 'date-fns'
 
 // 4d 22h left (Tue, 10:50 am)
 // 6h 2m left (Today 07:45 pm)
 
+const styles = {
+    text: {
+        fontWeight: "bold"
+    },
+}
+
 const DisplayExpiry = (props) => {
-
-    diff(props.expiry);
-
-    return (
-        <strong> {formatDistanceToNow(new Date(props.expiry), { includeSeconds: true })}</strong >
-    )
+    return <span style={styles.text}>{diff(props.expiry)}</span>
 }
 
 function diff(expiryDate) {
@@ -21,18 +27,6 @@ function diff(expiryDate) {
     var now = new Date();
     var expiry = new Date(expiryDate);
     var result = {};
-
-    var years = differenceInYears(expiry, now);
-    if (years > 0) {
-        result.years = years;
-        now = addYears(now, years); // remove years going forward
-    }
-
-    var months = differenceInMonths(expiry, now);
-    if (months > 0) {
-        result.months = months;
-        now = addMonths(now, months); // remove months going forward
-    }
 
     var days = differenceInDays(expiry, now);
     if (days > 0) {
@@ -57,7 +51,14 @@ function diff(expiryDate) {
         result.seconds = seconds;
     }
 
-    console.log(result);
+    if (result.days) {
+        return result.days + "d " + result.hours + "h left";
+
+    } else if (result.hours) {
+        return result.hours + "h " + result.minutes + "m left";
+    }
+
+    return "";
 }
 
 export default DisplayExpiry;
