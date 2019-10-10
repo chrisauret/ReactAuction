@@ -1,5 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
@@ -7,6 +6,7 @@ import { createBrowserHistory } from 'history';
 import configureStore from './store/configureStore';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 // Create browser history to use in the Redux store
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
@@ -19,11 +19,14 @@ const store = configureStore(history, initialState);
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App />
-    </ConnectedRouter>
-  </Provider>,
-  rootElement);
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <Fragment>
+                <CssBaseline />
+                <App />
+            </Fragment>
+        </ConnectedRouter>
+    </Provider>,
+    rootElement);
 
 registerServiceWorker();

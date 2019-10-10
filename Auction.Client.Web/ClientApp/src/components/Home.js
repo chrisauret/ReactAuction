@@ -8,12 +8,12 @@ class Home extends Component {
 
     componentDidMount() {
         this.props.requestItems();
-    } 
+    }
 
     render() {
 
         return (
-            <div className="row">
+            <div>
                 {
                     this.props.items.items.map((item) => {
                         return (

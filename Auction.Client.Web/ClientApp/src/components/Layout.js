@@ -1,26 +1,39 @@
 import React, { Component, Fragment } from 'react';
-import { Col, Container, Row } from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Grid, Paper } from '@material-ui/core'
 import { actionCreators } from '../store/Items';
 
-class Home1 extends Component {
+class Home extends Component {
+
     render() {
         return (
-            <Container>
-                <Row>
-                    <Col>
-                        <Fragment>
-                            {this.props.children}
-                        </Fragment>
-                    </Col>
-                </Row>
-            </Container>
+            <Grid container spacing={2} justify="center" >
+                <Fragment>
+                    {this.props.children}
+                </Fragment>
+            </Grid>
         )
     }
+
+
+
+    //render() {
+    //    return (
+    //        <Container>
+    //            <Row>
+    //                <Col>
+    //                    <Fragment>
+    //                        {this.props.children}
+    //                    </Fragment>
+    //                </Col>
+    //            </Row>
+    //        </Container>
+    //    )
+    //}
 }
 
 export default connect(
     state => state.items,
     dispatch => bindActionCreators(actionCreators, dispatch)
-)(Home1);
+)(Home);
