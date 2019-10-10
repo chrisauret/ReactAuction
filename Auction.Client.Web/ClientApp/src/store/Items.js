@@ -41,10 +41,6 @@ export const actionCreators = {
         dispatch({ type: requestUpdateItemType });
 
         let state = getState();
-
-        //console.log("placeBid item", item)
-        //console.log("placeBid state", state)
-
         const baseURL = "api/home/placebid";
 
         const data = JSON.stringify({
@@ -62,7 +58,6 @@ export const actionCreators = {
         })
             .then(response => response.json())
             .then(item => {
-                //console.log("Response: updatedItem", item);
                 dispatch({ type: receiveUpdateItemType, payload: item })
             });
     },

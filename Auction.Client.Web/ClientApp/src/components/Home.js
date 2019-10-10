@@ -7,7 +7,6 @@ import Item from './Item';
 class Home extends Component {
 
     componentDidMount() {
-        //console.log("componentdidmount this.props", this.props);
         this.props.requestItems();
     } 
 
@@ -28,9 +27,6 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-
-    //console.log("state ms2p", state);
-
     return state;
 }
 

@@ -33,7 +33,7 @@ namespace Auction.Data
                     Title = "Fantastic guitar for sale",
                     StartingBid = 100.0m,
                     ImgUrl = dummyImgUrl,
-                    Expiry = DateTime.UtcNow.AddHours(3).AddMinutes(18),
+                    Expiry = DateTime.UtcNow.AddHours(36).AddMinutes(18),
                     WinnerNotified = false
                 }); ;
 
@@ -56,91 +56,90 @@ namespace Auction.Data
                 });
             });
 
-            //modelBuilder.Entity<Item>().HasData(new
-            //{
-            //    Id = 124,
-            //    Description = "Weber",
-            //    OwnerId = 2,
-            //    Title = "Weber BBQ for sale",
-            //    StartingBid = 150m,
-            //    Bid = 165m,
-            //    ImgUrl = dummyImgUrl,
-            //    Expiry = DateTime.UtcNow.AddHours(22).AddMinutes(17),
-            //    WinnerNotified = false
-            //});
+            modelBuilder.Entity<Item>().HasData(new
+            {
+                Id = 124,
+                Description = "Weber",
+                OwnerId = 2,
+                Title = "Weber BBQ for sale",
+                StartingBid = 150m,
+                Bid = 165m,
+                ImgUrl = dummyImgUrl,
+                Expiry = DateTime.UtcNow.AddHours(22).AddMinutes(17),
+                WinnerNotified = false
+            });
 
-            //modelBuilder.Entity<Item>().HasData(new
-            //{
-            //    Id = 125,
-            //    Description = "Ikea Wardrobe",
-            //    OwnerId = 2,
-            //    Title = "Huge Ikea PAX wardrobe for sale",
-            //    StartingBid = 500m,
-            //    ImgUrl = dummyImgUrl,
-            //    Expiry = DateTime.UtcNow.AddHours(9).AddMinutes(41),
-            //    WinnerNotified = false
-            //});
+            modelBuilder.Entity<Item>().HasData(new
+            {
+                Id = 125,
+                Description = "Ikea Wardrobe",
+                OwnerId = 2,
+                Title = "Huge Ikea PAX wardrobe for sale",
+                StartingBid = 500m,
+                ImgUrl = dummyImgUrl,
+                Expiry = DateTime.UtcNow.AddHours(25).AddMinutes(41),
+                WinnerNotified = false
+            });
 
-            //modelBuilder.Entity<Item>().HasData(new
-            //{
-            //    Id = 126,
-            //    Description = "Area Rug",
-            //    OwnerId = 2,
-            //    Title = "Handmade area rug for sale",
-            //    StartingBid = 120m,
-            //    ImgUrl = dummyImgUrl,
-            //    Expiry = DateTime.UtcNow.AddHours(12).AddMinutes(7),
-            //    WinnerNotified = false
-            //});
+            modelBuilder.Entity<Item>().HasData(new
+            {
+                Id = 126,
+                Description = "Area Rug",
+                OwnerId = 2,
+                Title = "Handmade area rug for sale",
+                StartingBid = 120m,
+                ImgUrl = dummyImgUrl,
+                Expiry = DateTime.UtcNow.AddHours(44).AddMinutes(7),
+                WinnerNotified = false
+            });
 
-            //modelBuilder.Entity<Item>().HasData(new
-            //{
-            //    Id = 127,
-            //    Description = "Guitar",
-            //    OwnerId = 2,
-            //    Title = "Guitar for sale",
-            //    StartingBid = 120m,
-            //    ImgUrl = dummyImgUrl,
-            //    Expiry = DateTime.UtcNow.AddHours(3),
-            //    WinnerNotified = false
-            //});
+            modelBuilder.Entity<Item>().HasData(new
+            {
+                Id = 127,
+                Description = "Guitar",
+                OwnerId = 2,
+                Title = "Guitar for sale",
+                StartingBid = 120m,
+                ImgUrl = dummyImgUrl,
+                Expiry = DateTime.UtcNow.AddHours(3),
+                WinnerNotified = false
+            });
 
-            //modelBuilder.Entity<Item>().HasData(new
-            //{
-            //    Id = 128,
-            //    Description = "Heater",
-            //    OwnerId = 2,
-            //    Title = "Gas heater for sale",
-            //    StartingBid = 90m,
-            //    ImgUrl = dummyImgUrl,
-            //    Expiry = DateTime.UtcNow.AddHours(-3),
-            //    WinnerNotified = false
-            //});
+            modelBuilder.Entity<Item>().HasData(new
+            {
+                Id = 128,
+                Description = "Heater",
+                OwnerId = 2,
+                Title = "Gas heater for sale",
+                StartingBid = 90m,
+                ImgUrl = dummyImgUrl,
+                Expiry = DateTime.UtcNow.AddHours(-3),
+                WinnerNotified = false
+            });
 
-            //modelBuilder.Entity<Item>().HasData(new
-            //{
-            //    Id = 129,
-            //    Description = "Dinky Toys",
-            //    OwnerId = 2,
-            //    Title = "Dinky Toy Cars for sale",
-            //    StartingBid = 80m,
-            //    ImgUrl = dummyImgUrl,
-            //    Expiry = DateTime.UtcNow.AddHours(-6),
-            //    WinnerNotified = false
-            //});
+            modelBuilder.Entity<Item>().HasData(new
+            {
+                Id = 129,
+                Description = "Dinky Toys",
+                OwnerId = 2,
+                Title = "Dinky Toy Cars for sale",
+                StartingBid = 80m,
+                ImgUrl = dummyImgUrl,
+                Expiry = DateTime.UtcNow.AddHours(-6),
+                WinnerNotified = false
+            });
 
-            //modelBuilder.Entity<Item>().HasData(new
-            //{
-            //    Id = 130,
-            //    Description = "Dinky Toys",
-            //    OwnerId = 2,
-            //    Title = "Dinky Toy Cars for sale",
-            //    StartingBid = 80m,
-            //    ImgUrl = dummyImgUrl,
-            //    Expiry = DateTime.UtcNow.AddHours(-6),
-            //    WinnerNotified = false
-            //});
-
+            modelBuilder.Entity<Item>().HasData(new
+            {
+                Id = 130,
+                Description = "Dinky Toys",
+                OwnerId = 2,
+                Title = "Dinky Toy Cars for sale",
+                StartingBid = 80m,
+                ImgUrl = dummyImgUrl,
+                Expiry = DateTime.UtcNow.AddHours(-6),
+                WinnerNotified = false
+            });
         }
     }
 }
