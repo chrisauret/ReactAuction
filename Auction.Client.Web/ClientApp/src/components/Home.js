@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../store/Items';
 import Item from './Item';
+import Grid from '@material-ui/core/Grid';
 
 class Home extends Component {
 
@@ -13,15 +14,13 @@ class Home extends Component {
     render() {
 
         return (
-            <div>
+            <Grid container justify="center" spacing={3} >
                 {
                     this.props.items.items.map((item) => {
-                        return (
-                            <Item key={item.id} item={item} />
-                        )
+                        return <Item key={item.id} item={item} />
                     })
                 }
-            </div>
+            </Grid>
         )
     }
 }

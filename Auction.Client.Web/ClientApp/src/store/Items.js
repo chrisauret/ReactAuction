@@ -22,6 +22,7 @@ export const actionCreators = {
                 return response.json();
             })
             .then(data => {
+                console.log("type: ", receiveItemsType)
                 dispatch({ type: receiveItemsType, payload: data })
             });
     },
