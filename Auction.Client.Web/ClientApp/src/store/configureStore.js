@@ -1,11 +1,12 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import * as Items from './Items';
+import { itemReducer } from '../store/reducers/itemReducer';
 
 export default function configureStore(history, initialState) {
+
     const reducers = {
-        items: Items.reducer
+        items: itemReducer
     };
 
     const middleware = [

@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../store/Items';
+import * as actionCreators from '../store/actions/itemActions'
 import Item from './Item';
 import Grid from '@material-ui/core/Grid';
 
 class Home extends Component {
 
     componentDidMount() {
+        console.log("componentDidMount");
         this.props.requestItems();
     }
 
     render() {
+
+        console.log("this.props", this.props)
 
         return (
             <Grid container justify="center" spacing={3} >
@@ -26,6 +29,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log("state", state);
     return state;
 }
 

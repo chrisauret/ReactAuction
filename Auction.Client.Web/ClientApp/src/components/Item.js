@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actionCreators } from '../store/Items';
+import * as actionCreators from '../store/actions/itemActions'
 import DisplayExpiry from './DisplayExpiry';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -54,6 +54,7 @@ class Item extends Component {
     render() {
 
         const { classes } = this.props;
+        const id = this.props.item.id;
 
         return (
             <Grid item>
@@ -77,9 +78,9 @@ class Item extends Component {
                             <Box display="flex" flexDirection="row" className={classes.alignBottom}>
                                 <Box>
                                     <FormControl fullWidth>
-                                        <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
+                                        <InputLabel htmlFor={"adornment-amount-" + id}>Bid Amount</InputLabel>
                                         <Input
-                                            id="adornment-amount"
+                                            id={"adornment-amount-" + id}
                                             value={this.state.bid || ""}
                                             onChange={this.handleChange}
                                             startAdornment={<InputAdornment position="start">$</InputAdornment>}
