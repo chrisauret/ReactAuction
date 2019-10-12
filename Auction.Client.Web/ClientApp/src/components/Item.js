@@ -23,6 +23,17 @@ const styles = theme => {
         card: {
             width: 250,
         },
+        amount: {
+            width: "100px"
+        },
+        samsonFlex: {
+            //flex: 1
+            "margin-left": "auto",
+
+        },
+        alignBottom: {
+            "align-items": "flex-end"
+        }
     };
 };
 
@@ -62,10 +73,8 @@ class Item extends Component {
                         <Typography component="h6" variant="subtitle1">
                             Current bid: ${this.props.item.currentBid}
                         </Typography>
-                    </CardContent>
-                    <CardActions>
                         <form onSubmit={this.handleSubmit} noValidate>
-                            <Box display="flex" flexDirection="row">
+                            <Box display="flex" flexDirection="row" className={classes.alignBottom}>
                                 <Box>
                                     <FormControl fullWidth>
                                         <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
@@ -74,17 +83,19 @@ class Item extends Component {
                                             value={this.state.bid || ""}
                                             onChange={this.handleChange}
                                             startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                            className={classes.amount}
                                         />
                                     </FormControl>
                                 </Box>
-                                <Box>
+
+                                <Box className={classes.samsonFlex}>
                                     <Button type="submit" variant="contained" color="primary">
                                         Place Bid
                                 </Button>
                                 </Box>
                             </Box>
                         </form>
-                    </CardActions>
+                    </CardContent>
                 </Card>
             </Grid>
         )

@@ -30,7 +30,7 @@ namespace Auction.Data
                     Id = 123,
                     Description = "Guitar",
                     OwnerId = 1,
-                    Title = "Fantastic guitar for sale",
+                    Title = "Fantastic accoustic guitar",
                     StartingBid = 100.0m,
                     ImgUrl = dummyImgUrl,
                     Expiry = DateTime.UtcNow.AddHours(36).AddMinutes(18),
@@ -61,7 +61,7 @@ namespace Auction.Data
                 Id = 124,
                 Description = "Weber",
                 OwnerId = 2,
-                Title = "Weber BBQ for sale",
+                Title = "Weber BBQ BabyQ",
                 StartingBid = 150m,
                 Bid = 165m,
                 ImgUrl = dummyImgUrl,
@@ -74,7 +74,7 @@ namespace Auction.Data
                 Id = 125,
                 Description = "Ikea Wardrobe",
                 OwnerId = 2,
-                Title = "Huge Ikea PAX wardrobe for sale",
+                Title = "Ikea PAX wardrobe",
                 StartingBid = 500m,
                 ImgUrl = dummyImgUrl,
                 Expiry = DateTime.UtcNow.AddHours(25).AddMinutes(41),
@@ -86,7 +86,7 @@ namespace Auction.Data
                 Id = 126,
                 Description = "Area Rug",
                 OwnerId = 2,
-                Title = "Handmade area rug for sale",
+                Title = "Handmade area rug",
                 StartingBid = 120m,
                 ImgUrl = dummyImgUrl,
                 Expiry = DateTime.UtcNow.AddHours(44).AddMinutes(7),
@@ -98,7 +98,7 @@ namespace Auction.Data
                 Id = 127,
                 Description = "Guitar",
                 OwnerId = 2,
-                Title = "Guitar for sale",
+                Title = "Dishwasher for sale",
                 StartingBid = 120m,
                 ImgUrl = dummyImgUrl,
                 Expiry = DateTime.UtcNow.AddHours(3),
@@ -113,7 +113,7 @@ namespace Auction.Data
                 Title = "Gas heater for sale",
                 StartingBid = 90m,
                 ImgUrl = dummyImgUrl,
-                Expiry = DateTime.UtcNow.AddHours(-3),
+                Expiry = DateTime.UtcNow.AddHours(3),
                 WinnerNotified = false
             });
 
@@ -125,7 +125,7 @@ namespace Auction.Data
                 Title = "Dinky Toy Cars for sale",
                 StartingBid = 80m,
                 ImgUrl = dummyImgUrl,
-                Expiry = DateTime.UtcNow.AddHours(-6),
+                Expiry = DateTime.UtcNow.AddHours(26),
                 WinnerNotified = false
             });
 
@@ -137,7 +137,7 @@ namespace Auction.Data
                 Title = "Dinky Toy Cars for sale",
                 StartingBid = 80m,
                 ImgUrl = dummyImgUrl,
-                Expiry = DateTime.UtcNow.AddHours(-6),
+                Expiry = DateTime.UtcNow.AddHours(6),
                 WinnerNotified = false
             });
         }
