@@ -61,17 +61,28 @@ class Item extends Component {
                 <Card className={classes.card}>
                     <CardContent>
                         <img className="card-img-top" src="https://picsum.photos/220/150?blur=5" alt={this.props.item.title} />
-                        <Typography component="h3" variant="h5" color="textPrimary">
+                        <Typography component="h3" variant="h5" color="textPrimary" gutterBottom>
                             {this.props.item.title}
                         </Typography>
-                        <Typography component="h6">
-                            <DisplayExpiry expiry={this.props.item.expiry}></DisplayExpiry>
-                            <span>[{this.props.item.bids.length} bids ]</span>
-                        </Typography>
+
+                        <Box display="flex" flexDirection="row">
+                            <Box>
+                                <Typography component="h6" gutterBottom>
+                                    <DisplayExpiry expiry={this.props.item.expiry}></DisplayExpiry>
+                                </Typography>
+                            </Box>
+                            <Box className={classes.samsonFlex}>
+                                <Typography component="h6" gutterBottom>
+                                    <span>[{this.props.item.bids.length} bids ]</span>
+                                </Typography>
+                            </Box>
+
+                        </Box>
+
                         <Typography component="h6">
                             Starting bid: ${this.props.item.startingBid}
                         </Typography>
-                        <Typography component="h6" variant="subtitle1">
+                        <Typography component="h6" variant="subtitle1" gutterBottom>
                             Current bid: ${this.props.item.currentBid}
                         </Typography>
                         <form onSubmit={this.handleSubmit} noValidate>
