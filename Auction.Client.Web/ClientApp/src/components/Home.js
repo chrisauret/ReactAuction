@@ -8,13 +8,10 @@ import Grid from '@material-ui/core/Grid';
 class Home extends Component {
 
     componentDidMount() {
-        console.log("componentDidMount");
         this.props.requestItems();
     }
 
     render() {
-
-        console.log("this.props", this.props)
 
         return (
             <Grid container justify="center" spacing={3} >
@@ -29,7 +26,6 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("state", state);
     return state;
 }
 

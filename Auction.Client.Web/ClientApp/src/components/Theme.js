@@ -32,5 +32,5 @@ export default createMuiTheme({
         background: {
             default: '#DFDBE5',
         },
-    }
+    },
 });
