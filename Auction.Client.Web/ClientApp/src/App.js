@@ -4,7 +4,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import Home from './components/Home';
 import theme from './components/Theme';
 import Header from './components/Header';
-import { Grid } from '@material-ui/core'
+import { Grid } from '@material-ui/core';
 
 export default () => (
     <MuiThemeProvider theme={theme}>
