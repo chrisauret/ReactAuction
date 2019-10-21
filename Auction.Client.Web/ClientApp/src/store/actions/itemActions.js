@@ -11,7 +11,7 @@ export const requestItems = () => async (dispatch, getState) => {
 
     console.log("[action] requestItems");
 
-    //dispatch({ type: requestItemsType });
+    dispatch({ type: requestItemsType });
 
     const url = `api/Home/GetItems`;
     fetch(url)

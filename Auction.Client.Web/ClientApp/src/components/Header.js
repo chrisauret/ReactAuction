@@ -33,7 +33,7 @@ class Header extends Component {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        News
+                        Auction
                      </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>

@@ -6,10 +6,17 @@ import theme from './components/Theme';
 import Header from './components/Header';
 import { Grid } from '@material-ui/core';
 
-export default () => (
+
+const styles = {
+        container: {
+            marginTop: '35px',
+        },
+};
+
+export default (styles) => (
     <MuiThemeProvider theme={theme}>
         <Header />
-        <Grid container spacing={10} justify="center">
+        <Grid container spacing={10} justify="center" className={styles.container}>
             <Route exact path='/' component={Home} />
         </Grid>
     </MuiThemeProvider>
