@@ -1,23 +1,22 @@
 import React from 'react';
-import { Route } from 'react-router';
+//import { Route } from 'react-router';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import Home from './components/Home';
 import theme from './components/Theme';
 import Header from './components/Header';
-import { Grid } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
-
-const styles = {
-        container: {
-            marginTop: '35px',
-        },
-};
-
-export default (styles) => (
+export default () => (
     <MuiThemeProvider theme={theme}>
         <Header />
-        <Grid container spacing={10} justify="center" className={styles.container}>
+        <Container maxWidth="md">
             <Route exact path='/' component={Home} />
-        </Grid>
+        </Container>
     </MuiThemeProvider>
 );
