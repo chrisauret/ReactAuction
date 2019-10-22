@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { createBrowserHistory } from 'history';
 import configureStore from './store/configureStore';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Login from './components/Login';
 
 // Create browser history to use in the Redux store
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
@@ -20,12 +22,12 @@ const rootElement = document.getElementById('root');
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <Router history={history}>
             <Fragment>
                 <CssBaseline />
                 <App />
             </Fragment>
-        </ConnectedRouter>
+        </Router>
     </Provider>,
     rootElement);
 

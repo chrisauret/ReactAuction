@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/styles';
+import { Link } from "react-router-dom";
 
 const styles = theme => {
     return {
@@ -35,6 +36,7 @@ class Header extends Component {
                     <Typography variant="h6" className={classes.title}>
                         Auction
                      </Typography>
+                    <Link to="/Login">Login</Link>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
