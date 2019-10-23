@@ -19,6 +19,10 @@ const styles = theme => {
         title: {
             flexGrow: 1,
         },
+        link: {
+            color: theme.palette.secondary.main,
+            textDecoration: 'none'
+        }
     };
 };
 
@@ -30,14 +34,21 @@ class Header extends Component {
         return (
             <AppBar position="static">
                 <Toolbar>
+
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
+
                     <Typography variant="h6" className={classes.title}>
                         Auction
                      </Typography>
-                    <Link to="/Login">Login</Link>
-                    <Button color="inherit">Login</Button>
+
+                    <Link to="/Login" className={classes.link}>
+                        <Button color="inherit">
+                            Login
+                        </Button>
+                    </Link>
+
                 </Toolbar>
             </AppBar>
         )

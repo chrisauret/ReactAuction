@@ -13,10 +13,10 @@ const COLORS = {
 
 export default createMuiTheme({
     palette: {
-        //primary: {
-        //    main: COLORS.BLACK,
-        //    contrastText: COLORS.WHITE,
-        //},
+        primary: {
+            main: COLORS.BLACK,
+            contrastText: COLORS.WHITE,
+        },
         secondary: {
             main: COLORS.GREEN,
             contrastText: COLORS.BLACK,
