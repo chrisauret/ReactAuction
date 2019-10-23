@@ -43,7 +43,7 @@ class Header extends Component {
                         Auction
                      </Typography>
 
-                    <Link to="/Login" className={classes.link}>
+                    <Link to="/SignIn" className={classes.link}>
                         <Button color="inherit">
                             Login
                         </Button>

@@ -12,7 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/styles';
 
-
 const styles = theme => {
     return {
         '@global': {
@@ -40,9 +39,7 @@ const styles = theme => {
     };
 };
 
-
-
-class Login extends Component {
+class SignIn extends Component {
     render() {
 
         const { classes } = this.props;
@@ -58,7 +55,7 @@ class Login extends Component {
                         </Avatar>
                         <Typography component="h1" variant="h5">
                             Sign in
-                    </Typography>
+                        </Typography>
                         <form className={classes.form} noValidate>
                             <TextField
                                 variant="outlined"
@@ -94,15 +91,15 @@ class Login extends Component {
                                 className={classes.submit}
                             >
                                 Sign In
-                        </Button>
+                            </Button>
                             <Grid container>
                                 <Grid item xs>
                                     <Link href="#" variant="body2">
                                         Forgot password?
-                                </Link>
+                                    </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
+                                    <Link to="/SignUp" variant="body2">
                                         {"Don't have an account? Sign Up"}
                                     </Link>
                                 </Grid>
@@ -115,4 +112,4 @@ class Login extends Component {
     }
 }
 
-export default withStyles(styles)(Login)
+export default withStyles(styles)(SignIn)
