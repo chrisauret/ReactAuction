@@ -40,7 +40,7 @@ export const placeBid = (item) => async (dispatch, getState) => {
 
     const data = JSON.stringify({
         ...item,
-        userId: state.items.userId
+        userId: state.itemReducer.userId
     });
 
     fetch(baseURL, {
