@@ -41,11 +41,12 @@ namespace Auction.Client.Web
             services.AddSignalR();
 
             var key = Encoding.ASCII.GetBytes("the_secret");
-            services.AddAuthentication(x =>
-           {
-               x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-               x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-           })
+            services
+                .AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
                 .AddJwtBearer(x =>
                 {
                     x.RequireHttpsMetadata = false;
@@ -59,7 +60,6 @@ namespace Auction.Client.Web
                     };
                 });
         }
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

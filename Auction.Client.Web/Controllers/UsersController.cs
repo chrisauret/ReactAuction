@@ -32,5 +32,14 @@ namespace Auction.Client.Web.Controllers
 
             return Ok(user);
         }
+
+        [AllowAnonymous]
+        [HttpPost("signup")]
+        public async Task<IActionResult> SignUp([FromBody] User user)
+        {
+            var newUser = await _userService.SignUp(user);
+
+            return Ok(newUser);
+        }
     }
 }

@@ -40,6 +40,19 @@ const styles = theme => {
 
 class SignUp extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.handleSignUpClick = this.handleSignUpClick.bind(this);
+    }
+
+    handleSignUpClick(e) {
+
+        console.log("SignUp: ", e);
+
+        alert("Lets sign up");
+    }
+
     render() {
 
         const { classes } = this.props;
@@ -114,6 +127,7 @@ class SignUp extends Component {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={this.handleSignUpClick}
                         >
                             Sign Up
                         </Button>

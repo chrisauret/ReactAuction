@@ -1,8 +1,10 @@
 ﻿using Auction.Domain;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,27 @@ namespace Auction.Services
 {
     public class UserService : IUserService
     {
+        List<User> Users = new List<User>();
+
+        public async Task<User> SignUp(User user)
+        {
+            await Task.Run(() =>
+            {
+                if (!Users.Exists(x => x.Email == user.Email))
+                {
+                    user.Id = Guid.NewGuid();
+                    Users.Add(user);
+                }
+            });
+
+
+            var newUser = await Users.AsQueryable().FirstOrDefaultAsync(x => x.Email == user.Email);
+
+            // If exists return ?
+
+            return newUser;
+        }
+
         public async Task<User> Authenticate(string username, string password)
         {
             var user = await Task.Run(

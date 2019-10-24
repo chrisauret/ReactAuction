@@ -7,10 +7,8 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import { Container } from '@material-ui/core';
 import {
-    BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 
 
