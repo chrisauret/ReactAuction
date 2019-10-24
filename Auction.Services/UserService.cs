@@ -27,7 +27,7 @@ namespace Auction.Services
             });
 
 
-            var newUser = await Users.AsQueryable().FirstOrDefaultAsync(x => x.Email == user.Email);
+            var newUser = Users.AsQueryable().FirstOrDefault(x => x.Email == user.Email);
 
             // If exists return ?
 

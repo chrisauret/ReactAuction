@@ -10,6 +10,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/styles';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../store/actions/userActions'
 
 const styles = theme => {
     return {
@@ -53,17 +57,16 @@ class SignUp extends Component {
         console.log("Initial State:", this.state);
     }
 
-    handleChange(e) {
-
-        console.log(`SetState of {`[e.target.name]`} to {`[e.target.value]`}`);
-
+    handleChange = name => event => {
+        //console.log(`SetState of ${name} to ${event.target.value}`);
         this.setState({
-            [e.target.name]: e.target.value
+            [name]: event.target.value
         });
     }
 
     handleFormSubmit(e) {
         this.props.requestSignUp(this.state);
+        e.preventDefault();
     }
 
     render() {
@@ -91,7 +94,7 @@ class SignUp extends Component {
                                     id="firstName"
                                     label="First Name"
                                     autoFocus
-                                    onChange={this.handleChange}
+                                    onChange={this.handleChange("firstname")}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -103,7 +106,7 @@ class SignUp extends Component {
                                     label="Last Name"
                                     name="lastName"
                                     autoComplete="lname"
-                                    onChange={this.handleChange}
+                                    onChange={this.handleChange("lastname")}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -115,7 +118,7 @@ class SignUp extends Component {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="email"
-                                    onChange={this.handleChange}
+                                    onChange={this.handleChange("email")}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -128,7 +131,7 @@ class SignUp extends Component {
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
-                                    onChange={this.handleChange}
+                                    onChange={this.handleChange("password")}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -161,4 +164,17 @@ class SignUp extends Component {
     }
 }
 
-export default withStyles(styles)(SignUp);
+function mapStateToProps(state, ownProps) {
+    return ownProps;
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actionCreators, dispatch)
+}
+
+export default compose(
+    withStyles(styles, {
+        name: 'userStyles',
+    }),
+    connect(mapStateToProps, mapDispatchToProps),
+)(SignUp);
