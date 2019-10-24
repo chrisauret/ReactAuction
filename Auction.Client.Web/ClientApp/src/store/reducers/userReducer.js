@@ -1,20 +1,20 @@
 ﻿import {
-    requestItemsType,
-    receiveItemsType,
-    requestUpdateItemType,
-    receiveUpdateItemType
+    requestSignInUser,
+    receiveSignInUser,
+    requestSignUpUser,
+    receiveSignUpUser
 } from '../actions/types'
 
 const initialState = {
-    userId: 9099,
-    items: [],
+    user: {},
     isLoading: false
 };
 
+// SignIn
 export const userReducer = (state, action) => {
     state = state || initialState;
 
-    if (action.type === requestItemsType) {
+    if (action.type === requestSignInUser) {
 
         return {
             ...state,
@@ -22,18 +22,16 @@ export const userReducer = (state, action) => {
         };
     }
 
-    if (action.type === receiveItemsType) {
-
-        console.log("[reducer] receiveItemsType");
+    if (action.type === receiveSignInUser) {
 
         return {
             ...state,
-            items: action.payload,
             isLoading: false,
         }
     }
 
-    if (action.type === requestUpdateItemType) {
+// SignUp
+    if (action.type === requestSignUpUser) {
 
         return {
             ...state,
@@ -41,15 +39,11 @@ export const userReducer = (state, action) => {
         };
     }
 
-    if (action.type === receiveUpdateItemType) {
+    if (action.type === receiveSignUpUser) {
 
-        let items = [...state.items];
-        let objIndex = items.findIndex((obj => obj.id === action.payload.id));
-        items[objIndex] = action.payload;
 
         return {
             ...state,
-            items,
             isLoading: false
         }
     }

@@ -43,14 +43,27 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
 
-        this.handleSignUpClick = this.handleSignUpClick.bind(this);
+        this.state = {
+            ...props
+        };
+
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+
+        console.log("Initial State:", this.state);
     }
 
-    handleSignUpClick(e) {
+    handleChange(e) {
 
-        console.log("SignUp: ", e);
+        console.log(`SetState of {`[e.target.name]`} to {`[e.target.value]`}`);
 
-        alert("Lets sign up");
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    handleFormSubmit(e) {
+        this.props.requestSignUp(this.state);
     }
 
     render() {
@@ -66,7 +79,7 @@ class SignUp extends Component {
                     <Typography component="h1" variant="h5">
                         Sign up
                     </Typography>
-                    <form className={classes.form} noValidate>
+                    <form className={classes.form} noValidate onSubmit={this.handleFormSubmit}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -78,6 +91,7 @@ class SignUp extends Component {
                                     id="firstName"
                                     label="First Name"
                                     autoFocus
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -89,6 +103,7 @@ class SignUp extends Component {
                                     label="Last Name"
                                     name="lastName"
                                     autoComplete="lname"
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -100,6 +115,7 @@ class SignUp extends Component {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="email"
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -112,11 +128,12 @@ class SignUp extends Component {
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControlLabel
-                                    control={<Checkbox value="allowExtraEmails" color="primary" />}
+                                    control={<Checkbox value="allowExtraEmails" color="primary" onChange={this.handleChange} />}
                                     label="I want to receive inspiration, marketing promotions and updates via email."
                                 />
                             </Grid>
@@ -127,7 +144,6 @@ class SignUp extends Component {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
-                            onClick={this.handleSignUpClick}
                         >
                             Sign Up
                         </Button>
