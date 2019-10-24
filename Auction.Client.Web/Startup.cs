@@ -23,8 +23,9 @@ namespace Auction.Client.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IItemRepository, ItemRepository>();
-            services.AddSingleton<IItemService, ItemService> ();
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IItemService, ItemService> ();
+            services.AddScoped<IUserService, UserService> ();
 
             services.AddControllersWithViews();
 
