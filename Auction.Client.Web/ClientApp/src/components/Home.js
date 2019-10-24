@@ -28,7 +28,7 @@ class Home extends Component {
         return (
             <Grid container justify="center" spacing={3} className={classes.container} >
                 {
-                    this.props.items.items.map((item) => {
+                    this.props.itemReducer.items.map((item) => {
                         return <Item key={item.id} item={item} />
                     })
                 }

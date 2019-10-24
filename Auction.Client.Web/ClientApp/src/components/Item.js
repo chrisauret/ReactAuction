@@ -124,6 +124,7 @@ class Item extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
         this.props.placeBid(this.state.item);
         this.setState({ bid: null });
     }

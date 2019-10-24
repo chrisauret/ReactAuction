@@ -1,5 +1,4 @@
 ﻿using Auction.Domain;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;

@@ -2,11 +2,14 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { itemReducer } from '../store/reducers/itemReducer';
+import { userReducer } from "../store/reducers/userReducer";
 
 export default function configureStore(history, initialState) {
 
     const reducers = {
-        items: itemReducer
+        itemReducer,
+        userReducer,
+        routerReducer
     };
 
     const middleware = [
@@ -20,10 +23,9 @@ export default function configureStore(history, initialState) {
     if (isDevelopment && typeof window !== 'undefined' && window.devToolsExtension) {
         enhancers.push(window.devToolsExtension());
     }
-
+    // this or combineReducers in rootReducer.js?
     const rootReducer = combineReducers({
-        ...reducers,
-        routing: routerReducer
+        ...reducers
     });
 
     return createStore(

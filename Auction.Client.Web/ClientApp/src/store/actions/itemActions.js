@@ -9,8 +9,6 @@
 
 export const requestItems = () => async (dispatch, getState) => {
 
-    console.log("[action] requestItems");
-
     dispatch({ type: requestItemsType });
 
     const url = `api/Home/GetItems`;
@@ -19,7 +17,6 @@ export const requestItems = () => async (dispatch, getState) => {
             return response.json();
         })
         .then(data => {
-            console.log("type: ", receiveItemsType)
             dispatch({ type: receiveItemsType, payload: data })
         });
 };

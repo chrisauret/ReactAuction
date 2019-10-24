@@ -4,7 +4,7 @@ import { userReducer } from "./userReducer";
 
 export const reducers = () => {
     combineReducers({
-        items: itemReducer,
-        user: userReducer
+        itemReducer,
+        userReducer
     })
 };

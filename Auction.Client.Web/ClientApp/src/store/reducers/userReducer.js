@@ -10,10 +10,10 @@ const initialState = {
     isLoading: false
 };
 
-// SignIn
 export const userReducer = (state, action) => {
     state = state || initialState;
 
+    // SignIn
     if (action.type === requestSignInUser) {
 
         return {
@@ -30,7 +30,7 @@ export const userReducer = (state, action) => {
         }
     }
 
-// SignUp
+    // SignUp
     if (action.type === requestSignUpUser) {
 
         return {
@@ -41,9 +41,9 @@ export const userReducer = (state, action) => {
 
     if (action.type === receiveSignUpUser) {
 
-
         return {
             ...state,
+            user: { ...action.payload },
             isLoading: false
         }
     }

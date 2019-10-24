@@ -24,8 +24,6 @@ export const itemReducer = (state, action) => {
 
     if (action.type === receiveItemsType) {
 
-        console.log("[reducer] receiveItemsType");
-
         return {
             ...state,
             items: action.payload,
