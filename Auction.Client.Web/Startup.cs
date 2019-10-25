@@ -40,7 +40,7 @@ namespace Auction.Client.Web
 
             services.AddSignalR();
 
-            var key = Encoding.ASCII.GetBytes("the_secret");
+            var key = Encoding.ASCII.GetBytes("the_secret_is_that_you_can_do_anything_you_want");
             services
                 .AddAuthentication(x =>
                 {

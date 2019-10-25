@@ -10,6 +10,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/styles';
+import { connect } from 'react-redux';
+import compose from 'recompose/compose';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../store/actions/userActions'
 
 const styles = theme => {
     return {
@@ -39,6 +43,29 @@ const styles = theme => {
 };
 
 class SignIn extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            ...props
+        };
+
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value
+        });
+    }
+
+    handleFormSubmit(e) {
+        this.props.requestSignIn(this.state);
+        e.preventDefault();
+    }
+
     render() {
 
         const { classes } = this.props;
@@ -55,7 +82,7 @@ class SignIn extends Component {
                         <Typography component="h1" variant="h5">
                             Sign in
                         </Typography>
-                        <form className={classes.form} noValidate>
+                        <form className={classes.form} noValidate onSubmit={this.handleFormSubmit}>
                             <TextField
                                 variant="outlined"
                                 margin="normal"
@@ -66,6 +93,7 @@ class SignIn extends Component {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
+                                onChange={this.handleChange("email")}
                             />
                             <TextField
                                 variant="outlined"
@@ -77,6 +105,7 @@ class SignIn extends Component {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
+                                onChange={this.handleChange("password")}
                             />
                             <FormControlLabel
                                 control={<Checkbox value="remember" color="primary" />}
@@ -111,4 +140,17 @@ class SignIn extends Component {
     }
 }
 
-export default withStyles(styles)(SignIn)
+function mapStateToProps(state, ownProps) {
+    return ownProps;
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actionCreators, dispatch)
+}
+
+export default compose(
+    withStyles(styles, {
+        name: 'userStyles',
+    }),
+    connect(mapStateToProps, mapDispatchToProps),
+)(SignIn);

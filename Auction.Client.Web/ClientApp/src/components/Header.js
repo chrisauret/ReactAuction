@@ -9,8 +9,6 @@ import { withStyles } from '@material-ui/styles';
 import { Link } from "react-router-dom";
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actionCreators from '../store/actions/itemActions'
 
 const styles = theme => {
     return {
@@ -34,9 +32,9 @@ class Header extends Component {
 
     renderLoginContent() {
 
-        console.log("Header render Props", this.props);
-
         const { classes } = this.props;
+
+        console.log("this.props", this.props)
 
         if (!this.props.user.id) {
             return (
@@ -80,18 +78,12 @@ class Header extends Component {
 }
 
 function mapStateToProps({ appReducer }) {
-    console.log("Header:MapStateToProps:appReducer", appReducer);
-
     return appReducer;
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(actionCreators, dispatch)
 }
 
 export default compose(
     withStyles(styles, {
         name: 'Header',
     }),
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(mapStateToProps),
 )(Header);

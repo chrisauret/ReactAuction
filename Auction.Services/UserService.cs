@@ -33,7 +33,7 @@ namespace Auction.Services
             return newUser;
         }
 
-        public async Task<User> Authenticate(string username, string password)
+        public async Task<User> Authenticate(string email, string password)
         {
             var user = await Task.Run(
                 () => new User()
@@ -50,12 +50,14 @@ namespace Auction.Services
                 return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("the_secret");
+            var key = Encoding.ASCII.GetBytes("the_secret_is_that_you_can_do_anything_you_want");
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                        new Claim(ClaimTypes.GivenName, user.FirstName),
+                        new Claim(ClaimTypes.Surname, user.LastName)
                 }),
                 Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
