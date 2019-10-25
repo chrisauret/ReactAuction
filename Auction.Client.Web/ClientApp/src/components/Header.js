@@ -7,6 +7,10 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/styles';
 import { Link } from "react-router-dom";
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../store/actions/itemActions'
 
 const styles = theme => {
     return {
@@ -28,6 +32,30 @@ const styles = theme => {
 
 class Header extends Component {
 
+    renderLoginContent() {
+
+        console.log("Header render Props", this.props);
+
+        const { classes } = this.props;
+
+        if (!this.props.user.id) {
+            return (
+                <Link to="/SignIn" className={classes.link}>
+                    <Button color="inherit">
+                        Login
+                    </Button>
+                </Link>
+            )
+        } else {
+            return (
+                <Link to="/SignOut" className={classes.link}>
+                    <Button color="inherit">
+                        Sign Out
+                    </Button>
+                </Link>
+            )
+        }
+    }
     render() {
         const { classes } = this.props;
 
@@ -43,11 +71,7 @@ class Header extends Component {
                         Auction
                      </Typography>
 
-                    <Link to="/SignIn" className={classes.link}>
-                        <Button color="inherit">
-                            Login
-                        </Button>
-                    </Link>
+                    {this.renderLoginContent()}
 
                 </Toolbar>
             </AppBar>
@@ -55,4 +79,19 @@ class Header extends Component {
     }
 }
 
-export default withStyles(styles)(Header);
+function mapStateToProps({ appReducer }) {
+    console.log("Header:MapStateToProps:appReducer", appReducer);
+
+    return appReducer;
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actionCreators, dispatch)
+}
+
+export default compose(
+    withStyles(styles, {
+        name: 'Header',
+    }),
+    connect(mapStateToProps, mapDispatchToProps),
+)(Header);

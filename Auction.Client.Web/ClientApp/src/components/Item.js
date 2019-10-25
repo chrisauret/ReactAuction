@@ -17,7 +17,6 @@ import compose from 'recompose/compose';
 import { withStyles } from '@material-ui/styles';
 
 const styles = theme => {
-    console.log(theme);
     return {
         card: {
             width: 250,

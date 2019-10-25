@@ -2,7 +2,7 @@
 import { itemReducer } from "./itemReducer";
 import { userReducer } from "./userReducer";
 
-export const reducers = () => {
+export const rootReducer = () => {
     combineReducers({
         itemReducer,
         userReducer

@@ -11,3 +11,8 @@ export const requestSignUpUser = '[user] REQUEST_SIGNUP';
 export const receiveSignUpUser = '[user] RECEIVE_SIGNUP';
 export const requestSignInUser = '[user] REQUEST_SIGNIN';
 export const receiveSignInUser = '[user] RECEIVE_SIGNIN';
+
+// Application
+export const setUserSignedIn = '[app] SET_USER_SIGN_IN';
+export const setUserSignedOut = '[app] SET_USER_SIGN_OUT';
+

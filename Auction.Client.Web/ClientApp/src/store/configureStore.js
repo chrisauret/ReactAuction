@@ -3,6 +3,8 @@ import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { itemReducer } from '../store/reducers/itemReducer';
 import { userReducer } from "../store/reducers/userReducer";
+import { appReducer } from "../store/reducers/appReducer";
+//import { rootReducer } from '../store/reducers/rootReducer';
 
 export default function configureStore(history, initialState) {
 
@@ -20,6 +22,7 @@ export default function configureStore(history, initialState) {
 
     // this or combineReducers in rootReducer.js?
     const rootReducer = combineReducers({
+        appReducer,
         itemReducer,
         userReducer,
         routerReducer

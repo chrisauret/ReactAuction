@@ -2,7 +2,8 @@
     requestSignInUser,
     receiveSignInUser,
     requestSignUpUser,
-    receiveSignUpUser
+    receiveSignUpUser,
+    setUserSignedIn
 } from '../actions/types'
 
 export const requestSignUp = (user) => async (dispatch, getState) => {
@@ -26,7 +27,8 @@ export const requestSignUp = (user) => async (dispatch, getState) => {
         .then(response => response.json())
         .then(user => {
             console.log("We have a user! :)", user);
-            dispatch({ type: receiveSignUpUser, payload: user })
+            dispatch({ type: receiveSignUpUser, payload: user });
+            dispatch({ type: setUserSignedIn, payload: user})
         });
 };
 
@@ -41,6 +43,6 @@ export const requestSignIn = () => async (dispatch, getState) => {
         })
         .then(data => {
             console.log("type: ", requestSignUpUser);
-            dispatch({ type: receiveSignInUser, payload: data })
+            dispatch({ type: receiveSignInUser, payload: data });
         });
 };

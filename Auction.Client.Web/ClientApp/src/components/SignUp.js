@@ -53,8 +53,6 @@ class SignUp extends Component {
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
-        console.log("Initial State:", this.state);
     }
 
     handleChange = name => event => {
