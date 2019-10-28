@@ -1,4 +1,5 @@
-﻿import {
+﻿import setAuthorisationHeaderToken from '../../utils/setAuthorisationToken';
+import {
     requestItemsType,
     receiveItemsType,
     requestUpdateItemType,
@@ -45,10 +46,7 @@ export const placeBid = (item) => async (dispatch, getState) => {
 
     fetch(baseURL, {
         method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
+        headers: setAuthorisationHeaderToken({ "Content-Type": "application/json" }),
         body: data
     })
         .then(response => response.json())

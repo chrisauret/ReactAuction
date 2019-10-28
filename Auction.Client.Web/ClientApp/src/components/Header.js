@@ -34,6 +34,8 @@ class Header extends Component {
 
         const { classes } = this.props;
 
+        //const { isAuthenticated } = this.props.auth; 
+
         console.log("this.props", this.props)
 
         if (!this.props.user.id) {
@@ -76,6 +78,10 @@ class Header extends Component {
         )
     }
 }
+
+//Header.propTypes = {
+//    appReducer: React.propTypes.object.isRequired
+//}
 
 function mapStateToProps({ appReducer }) {
     return appReducer;

@@ -1,9 +1,12 @@
-﻿import {
+﻿import setAuthorisationHeaderToken from '../../utils/setAuthorisationToken';
+import jwt from 'jsonwebtoken';
+import {
     requestSignInUser,
     receiveSignInUser,
     requestSignUpUser,
     receiveSignUpUser,
-    setUserSignedIn
+    setUserSignedIn,
+    setCurrentUserSession
 } from '../actions/types'
 
 export const requestSignUp = (user) => async (dispatch, getState) => {
@@ -43,10 +46,7 @@ export const requestSignIn = (user) => async (dispatch, getState) => {
 
     fetch(url, {
         method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
+        headers: setAuthorisationHeaderToken({"Content-Type": "application/json"}),
         body: data
     })
         .then(response => response.json())
@@ -54,5 +54,6 @@ export const requestSignIn = (user) => async (dispatch, getState) => {
             dispatch({ type: receiveSignInUser, payload: user });
             dispatch({ type: setUserSignedIn, payload: user })
             localStorage.setItem('jwtToken', user.token)
+            dispatch({ type: setCurrentUserSession, payload: jwt.decode(user.token) });
         });
 };

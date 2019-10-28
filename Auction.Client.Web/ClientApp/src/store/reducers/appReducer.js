@@ -1,9 +1,10 @@
 ﻿import {
     setUserSignedIn,
-    setUserSignedOut
+    setUserSignedOut,
 } from '../actions/types'
 
 const initialState = {
+    isAuthenticated: false,
     user: {}
 };
 
@@ -11,8 +12,6 @@ export const appReducer = (state, action) => {
     state = state || initialState;
 
     if (action.type === setUserSignedIn) {
-
-        console.log("signing in");
 
         return {
             ...state,

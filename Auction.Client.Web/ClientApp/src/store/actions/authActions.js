@@ -1,9 +1,9 @@
 ﻿import {
     setUserSignedIn,
     setUserSignedOut
-} from '../actions/types'
+} from './types'
 
-export const SetUserSignIn = (user) => async (dispatch, getState) => {
+export const setUserSignIn = (user) => async (dispatch, getState) => {
     dispatch({ type: setUserSignedIn, payload: user })
 };
 
