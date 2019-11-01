@@ -1,4 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import setAuthorisationToken from '../utils/setAuthorisationToken';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { itemReducer } from '../store/reducers/itemReducer';
@@ -20,6 +21,8 @@ export default function configureStore(history, initialState) {
     if (isDevelopment && typeof window !== 'undefined' && window.devToolsExtension) {
         enhancers.push(window.devToolsExtension());
     }
+
+    setAuthorisationToken(localStorage.jwtToken);
 
     // this or combineReducers in rootReducer.js?
     const rootReducer = combineReducers({
