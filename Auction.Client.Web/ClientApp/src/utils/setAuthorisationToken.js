@@ -1,12 +1,10 @@
-﻿
+﻿import axios from 'axios';
 
-export default function setAuthorisationHeaderToken(headers) {
-        if (localStorage.jwtToken) {
-            return {
-                ...headers,
-                'Authorization': `Bearer ${localStorage.jwtToken}`
-            }
-        } else {
-            return headers;
-        }
+export default function setAuthorisationToken(token) {
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
+    else {
+        delete axios.defaults.headers.common['Authorization'];
+    }
+}
