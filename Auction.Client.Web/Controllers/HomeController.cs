@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Auction.Data;
 using Auction.Domain;
 using Auction.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auction.Client.Web.Controllers
@@ -31,6 +32,7 @@ namespace Auction.Client.Web.Controllers
             return await _itemService.GetItemAsync(id);
         }
 
+        [Authorize]
         [HttpPost("PlaceBid")]
         public async Task<IActionResult> PlaceBidAsync([FromBody] ItemBidRequest request)
         {
