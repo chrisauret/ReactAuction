@@ -46,7 +46,7 @@ export const placeBid = (item) => async (dispatch, getState) => {
     });
 
     const headers = { 'Content-Type': 'application/json' };
-
+    console.log(axios.defaults.headers);
     axios.post(url, data, { headers: headers }).then(res => {
         console.log("placeBid :", res);
         dispatch({ type: receiveUpdateItemType, payload: res.data })

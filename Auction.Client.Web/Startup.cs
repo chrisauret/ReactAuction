@@ -26,20 +26,6 @@ namespace Auction.Client.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IItemRepository, ItemRepository>();
-            services.AddScoped<IItemService, ItemService>();
-            services.AddScoped<IUserService, UserService>();
-
-            services.AddControllersWithViews();
-
-            // In production, the React files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
-
-            services.AddSignalR();
-
             var key = Encoding.ASCII.GetBytes("the_secret_is_that_you_can_do_anything_you_want");
             services
                 .AddAuthentication(x =>
@@ -59,6 +45,20 @@ namespace Auction.Client.Web
                         ValidateAudience = false
                     };
                 });
+
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IItemService, ItemService>();
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddControllersWithViews();
+
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,6 +75,8 @@ namespace Auction.Client.Web
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
