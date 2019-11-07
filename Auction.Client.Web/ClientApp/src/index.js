@@ -14,16 +14,11 @@ const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const history = createBrowserHistory({ basename: baseUrl });
 
 // Get the application-wide store instance, prepopulating with state from the server where available.
-//debugger;
 const initialState = loadState();
-
-//console.log("window.initialReduxState", window.initialReduxState)
 
 const store = configureStore(history, initialState);
 
 store.subscribe(() => {
-
-    //console.log("State when saving to localstorage:", store.getState());
     saveState({
         sessionReducer: store.getState().sessionReducer
     });

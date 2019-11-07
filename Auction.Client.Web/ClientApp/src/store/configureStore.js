@@ -6,7 +6,6 @@ import { itemReducer } from '../store/reducers/itemReducer';
 import { userReducer } from "../store/reducers/userReducer";
 import { appReducer } from "../store/reducers/appReducer";
 import { sessionReducer } from "../store/reducers/sessionReducer";
-//import { rootReducer } from '../store/reducers/rootReducer';
 
 export const loadState = () => {
     try {
@@ -23,7 +22,6 @@ export const loadState = () => {
 export const saveState = (state) => {
     try {
         const serializedState = JSON.stringify(state);
-        //console.log("Saving the following state: ", serializedState);
         localStorage.setItem('state', serializedState);
     } catch (err) {
         console.log("ERROR saving state", err);
@@ -45,10 +43,6 @@ export default function configureStore(history, initialState) {
     }
 
     setAuthorisationToken(localStorage.jwtToken);
-
-    const persistedState = loadState();
-    //debugger;
-    //console.log("persistedState", persistedState)
 
     const rootReducer = combineReducers({
         sessionReducer,
