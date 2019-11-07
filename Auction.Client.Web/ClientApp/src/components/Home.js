@@ -25,13 +25,13 @@ class Home extends Component {
     render() {
         const { classes } = this.props;
 
-        if (!this.props.sessionReducer.isAuthenticated ) {
+        if (!this.props.session.isAuthenticated ) {
             return <h1> You can't see anything because you havent logged in</h1>
         } else {
             return (
                 <Grid container justify="center" spacing={3} className={classes.container} >
                     {
-                        this.props.itemReducer.items.map((item) => {
+                        this.props.item.items.map((item) => {
                             return <Item key={item.id} item={item} />
                         })
                     }
@@ -43,8 +43,8 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     return {
-        itemReducer: state.itemReducer,
-        sessionReducer: state.sessionReducer
+        item: state.itemReducer,
+        session: state.session
     }
 }
 

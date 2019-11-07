@@ -4,8 +4,7 @@ import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { itemReducer } from '../store/reducers/itemReducer';
 import { userReducer } from "../store/reducers/userReducer";
-import { appReducer } from "../store/reducers/appReducer";
-import { sessionReducer } from "../store/reducers/sessionReducer";
+import { sessionReducer as session } from "../store/reducers/sessionReducer";
 
 export const loadState = () => {
     try {
@@ -45,8 +44,7 @@ export default function configureStore(history, initialState) {
     setAuthorisationToken(localStorage.jwtToken);
 
     const rootReducer = combineReducers({
-        sessionReducer,
-        appReducer,
+        session,
         itemReducer,
         userReducer,
         routerReducer

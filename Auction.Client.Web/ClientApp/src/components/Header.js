@@ -33,8 +33,8 @@ class Header extends Component {
     renderLoginContent() {
 
         const { classes } = this.props;
-
-        if (!this.props.user.id) {
+        debugger;
+        if (!this.props.session.isAuthenticated) {
             return (
                 <Link to="/SignIn" className={classes.link}>
                     <Button color="inherit">
@@ -80,8 +80,10 @@ class Header extends Component {
 //    appReducer: React.propTypes.object.isRequired
 //}
 
-function mapStateToProps({ appReducer }) {
-    return appReducer;
+function mapStateToProps(state) {
+    return {
+        session: state.session
+    };
 }
 
 export default compose(

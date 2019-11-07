@@ -15,12 +15,10 @@ const history = createBrowserHistory({ basename: baseUrl });
 
 // Get the application-wide store instance, prepopulating with state from the server where available.
 const initialState = loadState();
-
 const store = configureStore(history, initialState);
-
 store.subscribe(() => {
     saveState({
-        sessionReducer: store.getState().sessionReducer
+        session: store.getState().session
     });
 })
 
