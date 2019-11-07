@@ -140,10 +140,6 @@ class SignIn extends Component {
     }
 }
 
-function mapStateToProps(state, ownProps) {
-    return ownProps;
-}
-
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(actionCreators, dispatch)
 }
@@ -152,5 +148,5 @@ export default compose(
     withStyles(styles, {
         name: 'userStyles',
     }),
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(null, mapDispatchToProps),
 )(SignIn);

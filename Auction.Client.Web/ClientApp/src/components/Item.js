@@ -58,7 +58,7 @@ class Item extends Component {
             <Grid item>
                 <Card className={classes.card}>
                     <CardContent>
-                        <img className="card-img-top" src="https://picsum.photos/220/150?blur=5" alt={this.props.item.title} />
+                        <img className="card-img-top" src="placeholder.png" alt={this.props.item.title} />
                         <Typography component="h3" variant="h5" color="textPrimary" gutterBottom>
                             {this.props.item.title}
                         </Typography>
@@ -129,10 +129,6 @@ class Item extends Component {
     }
 }
 
-function mapStateToProps(state, ownProps) {
-    return ownProps;
-}
-
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(actionCreators, dispatch)
 }
@@ -141,5 +137,5 @@ export default compose(
     withStyles(styles, {
         name: 'Item',
     }),
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(null, mapDispatchToProps),
 )(Item);

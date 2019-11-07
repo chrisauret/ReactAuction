@@ -8,6 +8,28 @@ import { appReducer } from "../store/reducers/appReducer";
 import { sessionReducer } from "../store/reducers/sessionReducer";
 //import { rootReducer } from '../store/reducers/rootReducer';
 
+export const loadState = () => {
+    try {
+        const serializedState = localStorage.getItem('state');
+        if (serializedState === null) {
+            return undefined;
+        }
+        return JSON.parse(serializedState);
+    } catch (err) {
+        return undefined;
+    }
+}
+
+export const saveState = (state) => {
+    try {
+        const serializedState = JSON.stringify(state);
+        //console.log("Saving the following state: ", serializedState);
+        localStorage.setItem('state', serializedState);
+    } catch (err) {
+        console.log("ERROR saving state", err);
+    }
+}
+
 export default function configureStore(history, initialState) {
 
     const middleware = [
@@ -24,12 +46,15 @@ export default function configureStore(history, initialState) {
 
     setAuthorisationToken(localStorage.jwtToken);
 
-    // this or combineReducers in rootReducer.js?
+    const persistedState = loadState();
+    //debugger;
+    //console.log("persistedState", persistedState)
+
     const rootReducer = combineReducers({
+        sessionReducer,
         appReducer,
         itemReducer,
         userReducer,
-        sessionReducer,
         routerReducer
     });
 

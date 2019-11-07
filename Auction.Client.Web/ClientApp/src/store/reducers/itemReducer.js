@@ -6,7 +6,6 @@
 } from '../actions/types'
 
 const initialState = {
-    userId: 9099,
     items: [],
     isLoading: false
 };

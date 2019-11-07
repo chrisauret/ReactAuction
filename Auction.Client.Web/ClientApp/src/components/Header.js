@@ -34,10 +34,6 @@ class Header extends Component {
 
         const { classes } = this.props;
 
-        //const { isAuthenticated } = this.props.auth; 
-
-        console.log("this.props", this.props)
-
         if (!this.props.user.id) {
             return (
                 <Link to="/SignIn" className={classes.link}>
@@ -56,6 +52,7 @@ class Header extends Component {
             )
         }
     }
+
     render() {
         const { classes } = this.props;
 
