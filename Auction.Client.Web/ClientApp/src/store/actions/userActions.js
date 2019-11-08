@@ -6,7 +6,7 @@ import {
     receiveSignInUser,
     requestSignUpUser,
     receiveSignUpUser,
-    setCurrentUserSession
+    setUserSignedIn
 } from '../actions/types'
 
 export const requestSignUp = (user) => async (dispatch, getState) => {
@@ -25,7 +25,7 @@ export const requestSignUp = (user) => async (dispatch, getState) => {
         const user = res.data;
 
         dispatch({ type: receiveSignUpUser, payload: user });
-        dispatch({ type: setCurrentUserSession, payload: jwt.decode(user.token) });
+        dispatch({ type: setUserSignedIn, payload: jwt.decode(user.token) });
     });
 };
 
@@ -45,7 +45,7 @@ export const requestSignIn = (user) => async (dispatch, getState) => {
         const user = res.data;
 
         dispatch({ type: receiveSignInUser, payload: user });
-        dispatch({ type: setCurrentUserSession, payload: jwt.decode(user.token) });
+        dispatch({ type: setUserSignedIn, payload: jwt.decode(user.token) });
 
         localStorage.setItem('jwtToken', user.token);
         setAuthorisationToken(user.token);

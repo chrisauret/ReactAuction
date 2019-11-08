@@ -1,12 +1,11 @@
 ﻿import jwt from 'jsonwebtoken';
 import {
-    setCurrentUserSession
+    setUserSignedIn
 } from '../actions/types'
 
-
-export const setCurrentUser = (user) => async (dispatch, getState) => {
+export const setUserSignedIn = (user) => async (dispatch, getState) => {
     return {
-        type: setCurrentUserSession,
+        type: setUserSignedIn,
         payload: user
     }
 }

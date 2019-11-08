@@ -13,4 +13,5 @@ export const requestSignInUser = '[user] REQUEST_SIGNIN';
 export const receiveSignInUser = '[user] RECEIVE_SIGNIN';
 
 //Session setCurrentUser
-export const setCurrentUserSession = '[session] SET_CURRENT_USER';
+export const setUserSignedIn = '[session] SET_USER_SIGNED_IN';
+export const setUserSignedOut = '[session] SET_USER_SIGNED_OUT';

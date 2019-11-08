@@ -33,7 +33,7 @@ class Header extends Component {
     renderLoginContent() {
 
         const { classes } = this.props;
-        debugger;
+
         if (!this.props.session.isAuthenticated) {
             return (
                 <Link to="/SignIn" className={classes.link}>

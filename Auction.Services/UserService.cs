@@ -1,4 +1,5 @@
 ﻿using Auction.Domain;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,13 @@ namespace Auction.Services
 {
     public class UserService : IUserService
     {
+        private readonly AppSettings _appSettings;
+
+        public UserService(IOptions<AppSettings> appSettings)
+        {
+            _appSettings = appSettings.Value;
+        }
+
         List<User> Users = new List<User>();
 
         public async Task<User> SignUp(User user)
@@ -50,7 +58,8 @@ namespace Auction.Services
                 return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("the_secret_is_that_you_can_do_anything_you_want");
+            var jwtSecret = _appSettings.JwtSecret;
+            var key = Encoding.ASCII.GetBytes(jwtSecret);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(new Claim[]

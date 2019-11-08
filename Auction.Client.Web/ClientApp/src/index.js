@@ -32,7 +32,6 @@ ReactDOM.render(
                 <App />
             </Fragment>
         </Router>
-    </Provider>,
-    rootElement);
+    </Provider>, rootElement);
 
 registerServiceWorker();

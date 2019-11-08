@@ -1,5 +1,6 @@
 using Auction.Client.Web.Hubs;
 using Auction.Data;
+using Auction.Domain;
 using Auction.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -26,7 +27,14 @@ namespace Auction.Client.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var key = Encoding.ASCII.GetBytes("the_secret_is_that_you_can_do_anything_you_want");
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+            
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.JwtSecret);
+
             services
                 .AddAuthentication(x =>
                 {
