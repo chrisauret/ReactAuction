@@ -4,16 +4,11 @@
 } from '../actions/types'
 
 export const userSignedIn = (user) => async (dispatch, getState) => {
-    return {
-        type: setUserSignedIn,
-        payload: user
-    }
+    dispatch({ type: setUserSignedIn, payload: user})
 }
 
 export const userSignedOut = (user) => async (dispatch, getState) => {
-
-    console.log("Signing out");
-
+    console.log("signing out")
     dispatch({ type: setUserSignedOut });
-
+    localStorage.removeItem('jwtToken');
 }

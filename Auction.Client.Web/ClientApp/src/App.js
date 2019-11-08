@@ -1,7 +1,7 @@
 import React from 'react';
+import { Switch, Route } from "react-router-dom";
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
-import { Switch, Route } from "react-router-dom";
 import Home from './components/Home';
 import theme from './components/Theme';
 import Header from './components/Header';

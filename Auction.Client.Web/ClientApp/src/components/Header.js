@@ -94,8 +94,9 @@ class Header extends Component {
 //}
 
 function mapStateToProps(state) {
+    //debugger;
     return {
-        session: state.session
+        session: state.session     
     };
 }
 

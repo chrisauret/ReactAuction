@@ -64,6 +64,8 @@ class SignIn extends Component {
     handleFormSubmit(e) {
         this.props.requestSignIn(this.state);
         e.preventDefault();
+
+        this.props.history.push("/");
     }
 
     render() {

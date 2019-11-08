@@ -19,7 +19,7 @@ export const loadState = () => {
     }
 }
 
-// Save the Redux state to localStorage
+// Persist the Redux state to localStorage
 export const saveState = (state) => {
     try {
         const serializedState = JSON.stringify(state);

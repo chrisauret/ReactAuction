@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from '../store/actions/itemActions'
-import DisplayExpiry from './DisplayExpiry';
+import compose from 'recompose/compose';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -13,8 +12,9 @@ import FormControl from '@material-ui/core/FormControl'
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import compose from 'recompose/compose';
 import { withStyles } from '@material-ui/styles';
+import * as actionCreators from '../store/actions/itemActions'
+import DisplayExpiry from './DisplayExpiry';
 
 const styles = theme => {
     return {
