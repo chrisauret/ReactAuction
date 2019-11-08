@@ -1,11 +1,19 @@
-﻿import jwt from 'jsonwebtoken';
-import {
-    setUserSignedIn
+﻿import {
+    setUserSignedIn,
+    setUserSignedOut
 } from '../actions/types'
 
-export const setUserSignedIn = (user) => async (dispatch, getState) => {
+export const userSignedIn = (user) => async (dispatch, getState) => {
     return {
         type: setUserSignedIn,
         payload: user
     }
+}
+
+export const userSignedOut = (user) => async (dispatch, getState) => {
+
+    console.log("Signing out");
+
+    dispatch({ type: setUserSignedOut });
+
 }

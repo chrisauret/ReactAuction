@@ -1,4 +1,6 @@
 ﻿import React, { Component } from 'react'
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../store/actions/sessionActions'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -30,7 +32,13 @@ const styles = theme => {
 
 class Header extends Component {
 
-    renderLoginContent() {
+    constructor(props) {
+        super(props);
+
+        this.handleSignOutClick = this.handleSignOutClick.bind(this);
+    }
+
+    renderSignInOutLinks() {
 
         const { classes } = this.props;
 
@@ -44,13 +52,18 @@ class Header extends Component {
             )
         } else {
             return (
-                <Link to="/SignOut" className={classes.link}>
-                    <Button color="inherit">
+                <Link to="/" className={classes.link}>
+                    <Button onClick={this.handleSignOutClick} color="inherit">
                         Sign Out
                     </Button>
                 </Link>
             )
         }
+    }
+
+    handleSignOutClick(e) {
+        e.preventDefault();
+        this.props.userSignedOut();
     }
 
     render() {
@@ -68,7 +81,7 @@ class Header extends Component {
                         Auction
                      </Typography>
 
-                    {this.renderLoginContent()}
+                    {this.renderSignInOutLinks()}
 
                 </Toolbar>
             </AppBar>
@@ -86,9 +99,13 @@ function mapStateToProps(state) {
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actionCreators, dispatch)
+}
+
 export default compose(
     withStyles(styles, {
         name: 'Header',
     }),
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
 )(Header);
