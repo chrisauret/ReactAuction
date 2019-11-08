@@ -1,13 +1,11 @@
 ﻿import setAuthorisationToken from '../../utils/setAuthorisationToken';
 import axios from 'axios';
-
 import jwt from 'jsonwebtoken';
 import {
     requestSignInUser,
     receiveSignInUser,
     requestSignUpUser,
     receiveSignUpUser,
-    setUserSignedIn,
     setCurrentUserSession
 } from '../actions/types'
 
@@ -27,7 +25,7 @@ export const requestSignUp = (user) => async (dispatch, getState) => {
         const user = res.data;
 
         dispatch({ type: receiveSignUpUser, payload: user });
-        dispatch({ type: setUserSignedIn, payload: user })
+        dispatch({ type: setCurrentUserSession, payload: jwt.decode(user.token) });
     });
 };
 
@@ -47,11 +45,9 @@ export const requestSignIn = (user) => async (dispatch, getState) => {
         const user = res.data;
 
         dispatch({ type: receiveSignInUser, payload: user });
-        dispatch({ type: setUserSignedIn, payload: user })
+        dispatch({ type: setCurrentUserSession, payload: jwt.decode(user.token) });
 
         localStorage.setItem('jwtToken', user.token);
         setAuthorisationToken(user.token);
-
-        dispatch({ type: setCurrentUserSession, payload: jwt.decode(user.token) });
     });
 };

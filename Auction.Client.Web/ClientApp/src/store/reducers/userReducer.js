@@ -7,7 +7,6 @@
 
 const initialState = {
     user: {},
-    isAuthenticated: false,
     isLoading: false
 };
 

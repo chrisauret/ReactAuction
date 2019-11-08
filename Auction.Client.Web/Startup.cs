@@ -104,15 +104,3 @@ namespace Auction.Client.Web
         }
     }
 }
-
-//updateTicketElapsedWaitTime() {
-//    var newMasterTicketList = Object.assign({}, this.state.masterTicketList);
-//    Object.keys(newMasterTicketList).forEach(ticketId => {
-//        newMasterTicketList[ticketId].formattedWaitTime = (newMasterTicketList[ticketId].timeOpen).fromNow(true);
-//    });
-//    this.setState({ masterTicketList: newMasterTicketList });
-//}
-
-//This won't work
-//let objIndex = state.items.findIndex((obj => obj.id === action.payload.id));
-//state.items[objIndex] = action.payload;

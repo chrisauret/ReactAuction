@@ -6,6 +6,7 @@ import { itemReducer } from '../store/reducers/itemReducer';
 import { userReducer } from "../store/reducers/userReducer";
 import { sessionReducer as session } from "../store/reducers/sessionReducer";
 
+// Restore the Redux state from localStorage
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('state');
@@ -18,6 +19,7 @@ export const loadState = () => {
     }
 }
 
+// Save the Redux state to localStorage
 export const saveState = (state) => {
     try {
         const serializedState = JSON.stringify(state);
