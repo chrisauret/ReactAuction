@@ -1,17 +1,22 @@
 ﻿// Item action types
-export const requestItemsType = '[item] REQUEST_ITEMS';
-export const receiveItemsType = '[item] RECEIVE_ITEMS';
-export const requestItemTpe = '[item] REQUEST_ITEM';
-export const receiveItemType = '[item] RECEIVE_ITEM';
-export const requestUpdateItemType = '[item] REQUEST_UPDATE_ITEM';
-export const receiveUpdateItemType = '[item] RECEIVE_UPDATE_ITEM';
+export const REQUEST_ITEMS = '[item] REQUEST_ITEMS';
+export const RECEIVE_ITEMS = '[item] RECEIVE_ITEMS';
+export const REQUEST_ITEM = '[item] REQUEST_ITEM';
+export const RECEIVE_ITEM = '[item] RECEIVE_ITEM';
+export const REQUEST_UPDATE_ITEM = '[item] REQUEST_UPDATE_ITEM';
+export const RECEIVE_UPDATE_ITEM = '[item] RECEIVE_UPDATE_ITEM';
 
 // User action types
-export const requestSignUpUser = '[user] REQUEST_SIGNUP';
-export const receiveSignUpUser = '[user] RECEIVE_SIGNUP';
-export const requestSignInUser = '[user] REQUEST_SIGNIN';
-export const receiveSignInUser = '[user] RECEIVE_SIGNIN';
+export const REQUEST_SIGN_UP_USER = '[user] REQUEST_SIGNUP';
+export const RECEIVE_SIGN_UP_USER = '[user] RECEIVE_SIGNUP';
+export const REQUEST_SIGN_IN_USER = '[user] REQUEST_SIGNIN';
+export const RECEIVE_SIGN_IN_USER = '[user] RECEIVE_SIGNIN';
 
 //Session setCurrentUser
-export const setUserSignedIn = '[session] SET_USER_SIGNED_IN';
-export const setUserSignedOut = '[session] SET_USER_SIGNED_OUT';
+export const SET_USER_SIGNED_IN = '[session] SET_USER_SIGNED_IN';
+export const SET_USER_SIGNED_OUT = '[session] SET_USER_SIGNED_OUT';
+
+// API action types
+export const API_REQUEST = "API_REQUEST";
+export const API_SUCCESS = "API_SUCCESS";
+export const API_ERROR = "API_ERROR";

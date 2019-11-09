@@ -1,8 +1,8 @@
 ﻿import {
-    requestItemsType,
-    receiveItemsType,
-    requestUpdateItemType,
-    receiveUpdateItemType
+    REQUEST_ITEMS,
+    RECEIVE_ITEMS,
+    REQUEST_UPDATE_ITEM,
+    RECEIVE_UPDATE_ITEM
 } from '../actions/types'
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
 export const itemReducer = (state, action) => {
     state = state || initialState;
 
-    if (action.type === requestItemsType) {
+    if (action.type === REQUEST_ITEMS) {
 
         return {
             ...state,
@@ -21,7 +21,7 @@ export const itemReducer = (state, action) => {
         };
     }
 
-    if (action.type === receiveItemsType) {
+    if (action.type === RECEIVE_ITEMS) {
 
         return {
             ...state,
@@ -30,7 +30,7 @@ export const itemReducer = (state, action) => {
         }
     }
 
-    if (action.type === requestUpdateItemType) {
+    if (action.type === REQUEST_UPDATE_ITEM) {
 
         return {
             ...state,
@@ -38,7 +38,7 @@ export const itemReducer = (state, action) => {
         };
     }
 
-    if (action.type === receiveUpdateItemType) {
+    if (action.type === RECEIVE_UPDATE_ITEM) {
 
         let items = [...state.items];
         let objIndex = items.findIndex((obj => obj.id === action.payload.id));

@@ -1,8 +1,8 @@
 ﻿import {
-    requestSignInUser,
-    receiveSignInUser,
-    requestSignUpUser,
-    receiveSignUpUser
+    REQUEST_SIGN_IN_USER,
+    RECEIVE_SIGN_IN_USER,
+    REQUEST_SIGN_UP_USER,
+    RECEIVE_SIGN_UP_USER
 } from '../actions/types'
 
 const initialState = {
@@ -14,7 +14,7 @@ export const userReducer = (state, action) => {
     state = state || initialState;
 
     // SignIn
-    if (action.type === requestSignInUser) {
+    if (action.type === REQUEST_SIGN_IN_USER) {
 
         return {
             ...state,
@@ -22,7 +22,7 @@ export const userReducer = (state, action) => {
         };
     }
 
-    if (action.type === receiveSignInUser) {
+    if (action.type === RECEIVE_SIGN_IN_USER) {
 
         return {
             ...state,
@@ -31,7 +31,7 @@ export const userReducer = (state, action) => {
     }
 
     // SignUp
-    if (action.type === requestSignUpUser) {
+    if (action.type === REQUEST_SIGN_UP_USER) {
 
         return {
             ...state,
@@ -39,7 +39,7 @@ export const userReducer = (state, action) => {
         };
     }
 
-    if (action.type === receiveSignUpUser) {
+    if (action.type === RECEIVE_SIGN_UP_USER) {
 
         return {
             ...state,

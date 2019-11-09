@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-//import { ConnectedRouter } from 'react-router-redux';
-//import { Router } from 'react-router-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history';
 import configureStore, { saveState, loadState } from './store/configureStore';
 import App from './App';

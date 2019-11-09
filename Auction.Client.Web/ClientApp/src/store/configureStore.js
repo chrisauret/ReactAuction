@@ -1,7 +1,7 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import setAuthorisationToken from '../utils/setAuthorisationToken';
-import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
+import thunk from 'redux-thunk';
+import setAuthorisationToken from '../utils/setAuthorisationToken';
 import { itemReducer } from '../store/reducers/itemReducer';
 import { userReducer } from "../store/reducers/userReducer";
 import { sessionReducer as session } from "../store/reducers/sessionReducer";

@@ -1,6 +1,6 @@
 ﻿import {
-    setUserSignedIn,
-    setUserSignedOut
+    SET_USER_SIGNED_IN,
+    SET_USER_SIGNED_OUT
 } from '../actions/types'
 
 const initialState = {
@@ -12,7 +12,7 @@ export const sessionReducer = (state, action) => {
 
     state = state || initialState;
 
-    if (action.type === setUserSignedIn) {
+    if (action.type === SET_USER_SIGNED_IN) {
 
         return {
             isAuthenticated: action.payload && true,
@@ -20,7 +20,7 @@ export const sessionReducer = (state, action) => {
         };
     }
 
-    if (action.type === setUserSignedOut) {
+    if (action.type === SET_USER_SIGNED_OUT) {
 
         return {
             isAuthenticated: false,
