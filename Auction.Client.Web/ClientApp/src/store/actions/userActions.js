@@ -1,4 +1,5 @@
 ﻿import setAuthorisationToken from '../../utils/setAuthorisationToken';
+import { push } from 'connected-react-router';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import {
@@ -41,13 +42,16 @@ export const requestSignIn = (user) => async (dispatch, getState) => {
 
     const headers = { 'Content-Type': 'application/json' };
 
-    axios.post(url, data, { headers: headers }).then(res => {
-        const user = res.data;
+    axios.post(url, data, { headers: headers })
+        .then(res => {
+            const user = res.data;
 
-        dispatch({ type: RECEIVE_SIGN_IN_USER, payload: user });
-        dispatch({ type: SET_USER_SIGNED_IN, payload: jwt.decode(user.token) });
+            dispatch({ type: RECEIVE_SIGN_IN_USER, payload: user });
+            dispatch({ type: SET_USER_SIGNED_IN, payload: jwt.decode(user.token) });
 
-        localStorage.setItem('jwtToken', user.token);
-        setAuthorisationToken(user.token);
-    });
+            localStorage.setItem('jwtToken', user.token);
+            setAuthorisationToken(user.token);
+
+            dispatch(push('/'));
+        });
 };

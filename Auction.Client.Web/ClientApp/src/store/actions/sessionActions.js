@@ -8,7 +8,6 @@ export const userSignedIn = (user) => async (dispatch, getState) => {
 }
 
 export const userSignedOut = (user) => async (dispatch, getState) => {
-    console.log("signing out")
     dispatch({ type: SET_USER_SIGNED_OUT });
     localStorage.removeItem('jwtToken');
 }

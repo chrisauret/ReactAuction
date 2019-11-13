@@ -8,7 +8,7 @@ const initialState = {
     user: {}
 };
 
-export const sessionReducer = (state, action) => {
+export const session = (state, action) => {
 
     state = state || initialState;
 

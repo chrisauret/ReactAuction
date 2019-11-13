@@ -1,6 +1,8 @@
-﻿import React, { Component } from 'react'
+﻿import React, { Component, Fragment } from 'react';
+import { Link } from "react-router-dom";
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actionCreators from '../store/actions/sessionActions'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -8,9 +10,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/styles';
-import { Link } from "react-router-dom";
-import compose from 'recompose/compose';
-import { connect } from 'react-redux';
+import * as actionCreators from '../store/actions/sessionActions'
 
 const styles = theme => {
     return {
@@ -38,27 +38,33 @@ class Header extends Component {
         this.handleSignOutClick = this.handleSignOutClick.bind(this);
     }
 
-    renderSignInOutLinks() {
-
+    guestLinks() {
         const { classes } = this.props;
-
-        if (!this.props.session.isAuthenticated) {
-            return (
+        return (
+            <Fragment>
+                <Link to="/SignUp" className={classes.link}>
+                    <Button color="inherit">
+                        Sign Up
+                    </Button>
+                </Link>
                 <Link to="/SignIn" className={classes.link}>
                     <Button color="inherit">
-                        Login
+                        Sign In
                     </Button>
                 </Link>
-            )
-        } else {
-            return (
-                <Link to="/" className={classes.link}>
-                    <Button onClick={this.handleSignOutClick} color="inherit">
-                        Sign Out
+            </Fragment>
+        )
+    }
+
+    userLinks() {
+        const { classes } = this.props;
+        return (
+            <Link to="/" className={classes.link}>
+                <Button onClick={this.handleSignOutClick} color="inherit">
+                    Sign Out
                     </Button>
-                </Link>
-            )
-        }
+            </Link>
+        )
     }
 
     handleSignOutClick(e) {
@@ -78,10 +84,10 @@ class Header extends Component {
                     </IconButton>
 
                     <Typography variant="h6" className={classes.title}>
-                        Auction
+                        Catalogue Manager
                      </Typography>
 
-                    {this.renderSignInOutLinks()}
+                    {this.props.session.isAuthenticated ? this.userLinks() : this.guestLinks()}
 
                 </Toolbar>
             </AppBar>
@@ -94,9 +100,8 @@ class Header extends Component {
 //}
 
 function mapStateToProps(state) {
-    //debugger;
     return {
-        session: state.session     
+        session: state.session
     };
 }
 

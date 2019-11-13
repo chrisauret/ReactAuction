@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import compose from 'recompose/compose';
 import { withStyles } from '@material-ui/styles';
 
-
 const styles = theme => {
     return {
         container: {
@@ -18,16 +17,18 @@ const styles = theme => {
 
 class Home extends Component {
 
-    componentDidMount() {
-        this.props.requestItems();
+    constructor(props) {
+        super(props);
+
+        props.requestItems();
     }
 
     render() {
         const { classes } = this.props;
 
-        if (!this.props.session.isAuthenticated ) {
-            return <h1> You can't see anything because you havent logged in</h1>
-        } else {
+        if (this.props.item.isLoading) { return null }
+
+        if (this.props.session.isAuthenticated) {
             return (
                 <Grid container justify="center" spacing={3} className={classes.container} >
                     {
@@ -38,12 +39,14 @@ class Home extends Component {
                 </Grid>
             )
         }
+
+        return <h1>You can't see anything because you havent logged in</h1>
     }
 }
 
 function mapStateToProps(state) {
     return {
-        item: state.itemReducer,
+        item: state.item,
         session: state.session
     }
 }

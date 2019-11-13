@@ -10,7 +10,7 @@ const initialState = {
     isLoading: false
 };
 
-export const userReducer = (state, action) => {
+export const user = (state, action) => {
     state = state || initialState;
 
     // SignIn

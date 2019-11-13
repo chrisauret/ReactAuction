@@ -18,7 +18,7 @@ export const requestItems = () => async (dispatch, getState) => {
         dispatch({ type: RECEIVE_ITEMS, payload: res.data })
     })
         .catch(error => {
-            console.log("requestItems ", error);
+            console.log("Error :(  itemActions.requestItems() ", error);
         });
 };
 
@@ -38,16 +38,15 @@ export const placeBid = (item) => async (dispatch, getState) => {
 
     let state = getState();
     const url = "api/home/placebid";
-
     const data = JSON.stringify({
         ...item,
-        userId: state.itemReducer.userId
+        userId: state.items.userId
     });
-
     const headers = { 'Content-Type': 'application/json' };
+
     axios.post(url, data, { headers: headers }).then(res => {
         dispatch({ type: RECEIVE_UPDATE_ITEM, payload: res.data })
-    }).catch(err => {
-        console.log("Error in PlaceBid :", err);
+    }).catch(error => {
+        console.log("Error :( itemActions.placeBid :", error);
     })
 };

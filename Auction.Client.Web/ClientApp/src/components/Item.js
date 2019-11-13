@@ -24,7 +24,7 @@ const styles = theme => {
         amount: {
             width: "100px"
         },
-        samsonFlex: {
+        fillSpace: {
             //flex: 1
             "margin-left": "auto",
 
@@ -58,6 +58,9 @@ class Item extends Component {
             <Grid item>
                 <Card className={classes.card}>
                     <CardContent>
+                        {
+                            //<Skeleton variant="rect" width={210} height={118} />
+                        }
                         <img className="card-img-top" src="placeholder.png" alt={this.props.item.title} />
                         <Typography component="h3" variant="h5" color="textPrimary" gutterBottom>
                             {this.props.item.title}
@@ -98,7 +101,7 @@ class Item extends Component {
                                     </FormControl>
                                 </Box>
 
-                                <Box className={classes.samsonFlex}>
+                                <Box className={classes.fillSpace}>
                                     <Button type="submit" variant="contained" color="primary">
                                         Place Bid
                                 </Button>

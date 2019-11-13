@@ -10,7 +10,7 @@ const initialState = {
     isLoading: false
 };
 
-export const itemReducer = (state, action) => {
+export const item = (state, action) => {
     state = state || initialState;
 
     if (action.type === REQUEST_ITEMS) {
