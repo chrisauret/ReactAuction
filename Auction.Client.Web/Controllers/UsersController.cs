@@ -22,10 +22,10 @@ namespace Auction.Client.Web.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody]AuthenticateModel model)
+        [HttpPost("signin")]
+        public async Task<IActionResult> SignIn([FromBody]AuthenticateModel model)
         {
-            var user = await _userService.Authenticate(model.Email, model.Password);
+            var user = await _userService.SignIn(model.Email, model.Password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -38,6 +38,15 @@ namespace Auction.Client.Web.Controllers
         public async Task<IActionResult> SignUp([FromBody] User user)
         {
             var newUser = await _userService.SignUp(user);
+
+            return Ok(newUser);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("resetpassword")]
+        public async Task<IActionResult> ResetPassword([FromBody] string email)
+        {
+            var newUser = await _userService.ResetPassword(email);
 
             return Ok(newUser);
         }

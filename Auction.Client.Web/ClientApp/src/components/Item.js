@@ -104,7 +104,7 @@ class Item extends Component {
                                 <Box className={classes.fillSpace}>
                                     <Button type="submit" variant="contained" color="primary">
                                         Place Bid
-                                </Button>
+                                    </Button>
                                 </Box>
                             </Box>
                         </form>
@@ -126,7 +126,6 @@ class Item extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
         this.props.placeBid(this.state.item);
         this.setState({ bid: null });
     }

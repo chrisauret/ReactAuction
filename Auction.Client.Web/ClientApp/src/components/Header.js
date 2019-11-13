@@ -95,10 +95,6 @@ class Header extends Component {
     }
 }
 
-//Header.propTypes = {
-//    appReducer: React.propTypes.object.isRequired
-//}
-
 function mapStateToProps(state) {
     return {
         session: state.session

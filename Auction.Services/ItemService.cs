@@ -25,7 +25,7 @@ namespace Auction.Services
             return await _itemRepository.GetItemsAsync();
         }
 
-        public async Task<Item> PlaceBidAsync(int itemId, int userId, decimal amount)
+        public async Task<Item> PlaceBidAsync(int itemId, Guid userId, decimal amount)
         {
             // TODO: Encapsulate each rule below into its own class to be used in a proper validation engine.
             // and return ValidationResult instead of null.

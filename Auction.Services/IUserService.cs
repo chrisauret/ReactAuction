@@ -9,6 +9,7 @@ namespace Auction.Services
     public interface IUserService
     {
         Task<User> SignUp(User user);
-        Task<User> Authenticate(string email, string password);
+        Task<User> SignIn(string email, string password);
+        Task<User> ResetPassword(string email);
     }
 }

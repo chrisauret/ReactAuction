@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Auction.Domain
 {
@@ -9,10 +7,9 @@ namespace Auction.Domain
     {
         [Key]
         public int Id{ get; set; }
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public decimal Amount { get; set; }
         public DateTime CreatedOn { get; set; }
-
         public int ItemId { get; set; }
     }
 }

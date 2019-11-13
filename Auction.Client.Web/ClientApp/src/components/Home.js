@@ -17,16 +17,12 @@ const styles = theme => {
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
-
-        props.requestItems();
+    componentDidMount() {
+        this.props.requestItems();
     }
 
     render() {
         const { classes } = this.props;
-
-        if (this.props.item.isLoading) { return null }
 
         if (this.props.session.isAuthenticated) {
             return (

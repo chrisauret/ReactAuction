@@ -25,7 +25,6 @@ namespace Auction.Data
         public async Task<Item> GetItemAsync(int itemId)
         {
             return await _dbContext.Items.SingleOrDefaultAsync(x => x.Id == itemId);
-
         }
 
         public async Task<Item> PlaceBidAsync(Item item)

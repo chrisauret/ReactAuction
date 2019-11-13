@@ -41,12 +41,12 @@ namespace Auction.Services
             return newUser;
         }
 
-        public async Task<User> Authenticate(string email, string password)
+        public async Task<User> SignIn(string email, string password)
         {
             var user = await Task.Run(
                 () => new User()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid("6f410358-79e4-491a-87f2-732dd9b0dca2"),
                     FirstName = "Chris",
                     LastName = "Auret",
                     Email = "chrisauret@gmail.com",
@@ -64,9 +64,9 @@ namespace Auction.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                        new Claim(ClaimTypes.GivenName, user.FirstName),
-                        new Claim(ClaimTypes.Surname, user.LastName)
+                    new Claim("id", user.Id.ToString()),
+                    new Claim(ClaimTypes.GivenName, user.FirstName),
+                    new Claim(ClaimTypes.Surname, user.LastName)
                 }),
                 Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -78,6 +78,11 @@ namespace Auction.Services
             user.Password = null;
 
             return user;
+        }
+
+        public Task<User> ResetPassword(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Auction.Data
                     ItemId = 123,
                     Amount = 110.0m,
                     CreatedOn = DateTime.UtcNow.AddHours(-2),
-                    UserId = 3
+                    UserId = new Guid("9c482eb1-db39-4c86-9e55-6fd185000c90")
                 });
 
                 i.OwnsMany(b => b.Bids).HasData(new
@@ -52,7 +52,7 @@ namespace Auction.Data
                     ItemId = 123,
                     Amount = 145.0m,
                     CreatedOn = DateTime.UtcNow.AddHours(-1),
-                    UserId = 3
+                    UserId = new Guid("506b2cf8-5022-48f0-88a9-34f707449816")
                 });
             });
 

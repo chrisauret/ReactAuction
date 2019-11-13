@@ -44,7 +44,7 @@ namespace Auction.Client.Web.Controllers
         public class ItemBidRequest
         {
             public int Id { get; set; }
-            public int UserId { get; set; }
+            public Guid UserId { get; set; }
             public int Bid { get; set; }
         }
     }

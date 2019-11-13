@@ -40,12 +40,14 @@ export const placeBid = (item) => async (dispatch, getState) => {
     const url = "api/home/placebid";
     const data = JSON.stringify({
         ...item,
-        userId: state.items.userId
+        userId: state.session.user.id
     });
     const headers = { 'Content-Type': 'application/json' };
 
     axios.post(url, data, { headers: headers }).then(res => {
+
         dispatch({ type: RECEIVE_UPDATE_ITEM, payload: res.data })
+
     }).catch(error => {
         console.log("Error :( itemActions.placeBid :", error);
     })

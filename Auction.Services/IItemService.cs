@@ -10,6 +10,6 @@ namespace Auction.Services
     {
         Task<Item> GetItemAsync(int itemId);
         Task<List<Item>> GetItemsAsync();
-        Task<Item> PlaceBidAsync(int itemId, int userId, decimal amount);
+        Task<Item> PlaceBidAsync(int itemId, Guid userId, decimal amount);
     }
 }
