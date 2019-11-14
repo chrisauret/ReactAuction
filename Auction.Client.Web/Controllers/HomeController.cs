@@ -38,6 +38,13 @@ namespace Auction.Client.Web.Controllers
         {
             var item = await _itemService.PlaceBidAsync(request.Id, request.UserId, request.Bid);
 
+            if(item == null)
+            {
+                return NotFound("Item not found");
+            }
+
+            // will need to serialise return result
+
             return Json(item);
         }
 
@@ -46,6 +53,12 @@ namespace Auction.Client.Web.Controllers
             public int Id { get; set; }
             public Guid UserId { get; set; }
             public int Bid { get; set; }
+        }
+
+        public class ItemBidResult
+        {
+            object Data;
+            List<string> Errors { get; set; }
         }
     }
 }

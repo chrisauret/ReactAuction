@@ -1,6 +1,7 @@
-﻿[{
+﻿[
+  {
     "id": 123,
-    "ownerId": 1,
+    "ownerId": "6f410358-79e4-491a-87f2-732dd9b0dca2",
     "title": "Fantastic accoustic guitar",
     "description": "Guitar",
     "imgUrl": "https://loremflickr.com/320/240",
@@ -8,23 +9,27 @@
     "startingBid": 100.0,
     "bid": null,
     "currentBid": 145.0,
-    "bids": [{
+    "bids": [
+      {
         "id": 1,
-        "userId": 3,
+        "userId": "ae3ec4f5-70ac-40a9-8e97-86319af3b28f",
         "amount": 110.0,
         "createdOn": "2019-10-21T08:25:15.8823455Z",
         "itemId": 123
-    }, {
+      },
+      {
         "id": 2,
-        "userId": 3,
+        "userId": "d2200dc1-e6e0-4f3b-bcbb-03d81f5ba5fc",
         "amount": 145.0,
         "createdOn": "2019-10-21T09:25:15.8833081Z",
         "itemId": 123
-    }],
+      }
+    ],
     "winnerNotified": false
-}, {
+  },
+  {
     "id": 124,
-    "ownerId": 2,
+    "ownerId": "dbbd0395-57ec-42d8-a89e-0a58685cdc51",
     "title": "Weber BBQ BabyQ",
     "description": "Weber",
     "imgUrl": "https://loremflickr.com/320/240",
@@ -34,9 +39,10 @@
     "currentBid": 0,
     "bids": [],
     "winnerNotified": false
-}, {
+  },
+  {
     "id": 125,
-    "ownerId": 2,
+    "ownerId": "dbbd0395-57ec-42d8-a89e-0a58685cdc51",
     "title": "Ikea PAX wardrobe",
     "description": "Ikea Wardrobe",
     "imgUrl": "https://loremflickr.com/320/240",
@@ -46,9 +52,10 @@
     "currentBid": 0,
     "bids": [],
     "winnerNotified": false
-}, {
+  },
+  {
     "id": 126,
-    "ownerId": 2,
+    "ownerId": "dbbd0395-57ec-42d8-a89e-0a58685cdc51",
     "title": "Handmade area rug",
     "description": "Area Rug",
     "imgUrl": "https://loremflickr.com/320/240",
@@ -58,9 +65,10 @@
     "currentBid": 0,
     "bids": [],
     "winnerNotified": false
-}, {
+  },
+  {
     "id": 127,
-    "ownerId": 2,
+    "ownerId": "92b83e23-641c-40c8-8672-108bc1cfecd9",
     "title": "Dishwasher for sale",
     "description": "Guitar",
     "imgUrl": "https://loremflickr.com/320/240",
@@ -70,9 +78,10 @@
     "currentBid": 0,
     "bids": [],
     "winnerNotified": false
-}, {
+  },
+  {
     "id": 128,
-    "ownerId": 2,
+    "ownerId": "92b83e23-641c-40c8-8672-108bc1cfecd9",
     "title": "Gas heater for sale",
     "description": "Heater",
     "imgUrl": "https://loremflickr.com/320/240",
@@ -82,7 +91,8 @@
     "currentBid": 0,
     "bids": [],
     "winnerNotified": false
-}, {
+  },
+  {
     "id": 129,
     "ownerId": 2,
     "title": "Dinky Toy Cars for sale",
@@ -94,9 +104,10 @@
     "currentBid": 0,
     "bids": [],
     "winnerNotified": false
-}, {
+  },
+  {
     "id": 130,
-    "ownerId": 2,
+    "ownerId": "2c9a5ae5-76cb-44da-a20a-97e20a9a5c7e",
     "title": "Dinky Toy Cars for sale",
     "description": "Dinky Toys",
     "imgUrl": "https://loremflickr.com/320/240",
@@ -106,4 +117,5 @@
     "currentBid": 0,
     "bids": [],
     "winnerNotified": false
-}]
+  }
+]

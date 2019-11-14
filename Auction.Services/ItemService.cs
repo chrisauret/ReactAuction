@@ -37,9 +37,13 @@ namespace Auction.Services
             // Fetch the item 
             var item = await _itemRepository.GetItemAsync(itemId);
 
+            var errros = new List<string>();
+
             //// Item owner cannot place bid
-            //if (item.OwnerId == userId)
-            //    return null;
+            if (item.OwnerId == userId)
+            {
+                errros.Add("Cannot bid on own item");
+            }
 
             //if (item.Bids != null && item.Bids.Count() > 0)
             //{
@@ -58,11 +62,11 @@ namespace Auction.Services
             //    }
             //}
 
-            //// Cannot bid on an expired item
-            //if (item.Expiry <= DateTime.UtcNow)
-            //{
-            //    return null;
-            //}
+            // Cannot bid on an expired item
+            if (item.Expiry <= DateTime.UtcNow)
+            {
+                errros.Add("Cannot bid on expired item");
+            }
 
             var newBid = new Bid()
             {

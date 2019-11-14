@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Auction.Domain
 {
     public class User
     {
+        [Key]
         public Guid Id { get; set; }
 
         public string Email { get; set; }

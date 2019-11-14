@@ -38,6 +38,11 @@ class Header extends Component {
         this.handleSignOutClick = this.handleSignOutClick.bind(this);
     }
 
+    handleSignOutClick(e) {
+        e.preventDefault();
+        this.props.userSignedOut();
+    }
+
     guestLinks() {
         const { classes } = this.props;
         return (
@@ -65,11 +70,6 @@ class Header extends Component {
                     </Button>
             </Link>
         )
-    }
-
-    handleSignOutClick(e) {
-        e.preventDefault();
-        this.props.userSignedOut();
     }
 
     render() {

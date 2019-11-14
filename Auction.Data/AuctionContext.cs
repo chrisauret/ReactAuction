@@ -29,7 +29,7 @@ namespace Auction.Data
                 {
                     Id = 123,
                     Description = "Guitar",
-                    OwnerId = 1,
+                    OwnerId = new Guid("6f410358-79e4-491a-87f2-732dd9b0dca2"),
                     Title = "Fantastic accoustic guitar",
                     StartingBid = 100.0m,
                     ImgUrl = dummyImgUrl,
@@ -60,7 +60,7 @@ namespace Auction.Data
             {
                 Id = 124,
                 Description = "Weber",
-                OwnerId = 2,
+                OwnerId = new Guid("dbbd0395-57ec-42d8-a89e-0a58685cdc51"),
                 Title = "Weber BBQ BabyQ",
                 StartingBid = 150m,
                 Bid = 165m,
@@ -73,7 +73,7 @@ namespace Auction.Data
             {
                 Id = 125,
                 Description = "Ikea Wardrobe",
-                OwnerId = 2,
+                OwnerId = new Guid("dbbd0395-57ec-42d8-a89e-0a58685cdc51"),
                 Title = "Ikea PAX wardrobe",
                 StartingBid = 500m,
                 ImgUrl = dummyImgUrl,
@@ -85,7 +85,7 @@ namespace Auction.Data
             {
                 Id = 126,
                 Description = "Area Rug",
-                OwnerId = 2,
+                OwnerId = Guid.NewGuid(),
                 Title = "Handmade area rug",
                 StartingBid = 120m,
                 ImgUrl = dummyImgUrl,
@@ -97,7 +97,7 @@ namespace Auction.Data
             {
                 Id = 127,
                 Description = "Guitar",
-                OwnerId = 2,
+                OwnerId = Guid.NewGuid(),
                 Title = "Dishwasher for sale",
                 StartingBid = 120m,
                 ImgUrl = dummyImgUrl,
@@ -109,7 +109,7 @@ namespace Auction.Data
             {
                 Id = 128,
                 Description = "Heater",
-                OwnerId = 2,
+                OwnerId = Guid.NewGuid(),
                 Title = "Gas heater for sale",
                 StartingBid = 90m,
                 ImgUrl = dummyImgUrl,
@@ -121,7 +121,7 @@ namespace Auction.Data
             {
                 Id = 129,
                 Description = "Dinky Toys",
-                OwnerId = 2,
+                OwnerId = Guid.NewGuid(),
                 Title = "Dinky Toy Cars for sale",
                 StartingBid = 80m,
                 ImgUrl = dummyImgUrl,
@@ -133,7 +133,7 @@ namespace Auction.Data
             {
                 Id = 130,
                 Description = "Dinky Toys",
-                OwnerId = 2,
+                OwnerId = Guid.NewGuid(),
                 Title = "Dinky Toy Cars for sale",
                 StartingBid = 80m,
                 ImgUrl = dummyImgUrl,
