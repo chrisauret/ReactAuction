@@ -11,9 +11,14 @@ namespace Auction.Data
         public DbSet<Item> Items { get; set; }
         public DbSet<Bid> Bids { get; set; }
 
+        public AuctionContext(DbContextOptions<AuctionContext> options) : base(options)
+        {
+
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("Auction");
+            //optionsBuilder.UseInMemoryDatabase("Auction");
                 //.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 

@@ -22,7 +22,7 @@ namespace Auction.Client.Web.Controllers
 
         [HttpGet("GetItems")]
         public async Task<IEnumerable<Item>> GetItemsAsync()
-        {
+       
             return await _itemService.GetItemsAsync();
         }
 

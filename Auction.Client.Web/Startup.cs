@@ -10,7 +10,9 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Options;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace Auction.Client.Web
 {
@@ -30,10 +32,15 @@ namespace Auction.Client.Web
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
-            
+
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.JwtSecret);
+            var dbConnection = appSettings.DbConnection;
+
+            services.AddEntityFrameworkNpgsql().AddDbContext<AuctionContext>(opt =>
+                opt.UseNpgsql(Configuration.GetConnectionString(dbConnection))
+            );
 
             services
                 .AddAuthentication(x =>
@@ -54,6 +61,7 @@ namespace Auction.Client.Web
                     };
                 });
 
+            services.AddSingleton<AuctionContext>();
             services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<IUserService, UserService>();

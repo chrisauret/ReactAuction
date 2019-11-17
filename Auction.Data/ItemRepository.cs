@@ -11,9 +11,9 @@ namespace Auction.Data
     {
         private AuctionContext _dbContext;
 
-        public ItemRepository()
+        public ItemRepository(AuctionContext dbContext)
         {
-            _dbContext = new AuctionContext();
+            _dbContext = dbContext;
             _dbContext.Database.EnsureCreated();
         }
 

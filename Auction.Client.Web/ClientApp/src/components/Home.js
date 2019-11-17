@@ -25,6 +25,7 @@ class Home extends Component {
         const { classes } = this.props;
 
         if (this.props.session.isAuthenticated) {
+
             return (
                 <Grid container justify="center" spacing={3} className={classes.container} >
                     {
